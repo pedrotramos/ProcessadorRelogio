@@ -200,9 +200,42 @@ RST_HD2:
     sub $1, %hd2
     jmp MAIN
 
+######### parte nova #########
 SET_HU:
-    
+    cmp $4, %hu
+    je RST_HU
+    add $1, %hu
 
+SET_HU2:
+    cmp $2, %hu2
+    je RST_HU2
+    add $1, %hu2
+    jmp MAIN
 
+RST_HU:
+    mov $0, %hu
+    jmp SET_HD2
 
-    
+RST_HU2:
+    sub $1, %hd2
+    jmp MAIN
+
+SET_MD:
+    cmp $5, %md
+    je RST_MD
+    add $1, %md
+    jmp MAIN
+
+RST_MD:
+    mov $0, %md
+    jmp MAIN
+
+SET_MU:
+    cmp $9, %mu
+    je RST_MU
+    add $1, %mu
+    jmp MAIN
+
+RST_MU:
+    mov $0, %mu
+    jmp MAIN
