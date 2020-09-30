@@ -214,7 +214,7 @@ SET_HU2:
 
 RST_HU:
     mov $0, %hu
-    jmp SET_HD2
+    jmp SET_HU2
 
 RST_HU2:
     sub $1, %hd2
