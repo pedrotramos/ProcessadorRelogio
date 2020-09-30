@@ -1,0 +1,23 @@
+Quartus Prime Archive log --	C:/Users/mathe/OneDrive/Documentos/6Periodo/designComputadores/Relogio/Relogio.qarlog
+
+Archive:	C:/Users/mathe/OneDrive/Documentos/6Periodo/designComputadores/Relogio/Relogio.qar
+Date:		Tue Sep 29 18:20:50 2020
+Quartus Prime		20.1.0 Build 711 06/05/2020 SJ Lite Edition
+
+	=========== Files Selected: ===========
+C:/Users/mathe/OneDrive/Documentos/6Periodo/designComputadores/Relogio/Relogio.qpf
+C:/Users/mathe/OneDrive/Documentos/6Periodo/designComputadores/Relogio/Relogio.qsf
+C:/Users/mathe/OneDrive/Documentos/6Periodo/designComputadores/Relogio/Relogio.vhd
+C:/Users/mathe/OneDrive/Documentos/6Periodo/designComputadores/Relogio/ULA.vhd
+C:/Users/mathe/OneDrive/Documentos/6Periodo/designComputadores/Relogio/bancoRegistradoresArqRegReg.vhd
+C:/Users/mathe/OneDrive/Documentos/6Periodo/designComputadores/Relogio/flipFlop.vhd
+C:/Users/mathe/OneDrive/Documentos/6Periodo/designComputadores/Relogio/fluxoDados.vhd
+C:/Users/mathe/OneDrive/Documentos/6Periodo/designComputadores/Relogio/memoriaROM.vhd
+C:/Users/mathe/OneDrive/Documentos/6Periodo/designComputadores/Relogio/muxGenerico2x1.vhd
+C:/Users/mathe/OneDrive/Documentos/6Periodo/designComputadores/Relogio/registradorGenerico.vhd
+C:/Users/mathe/OneDrive/Documentos/6Periodo/designComputadores/Relogio/somaConstante.vhd
+c:/intelfpga_lite/20.1/quartus/bin64/assignment_defaults.qdf
+	======= Total: 12 files to archive =======
+
+	================ Status: ===============
+All files archived successfully.
