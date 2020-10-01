@@ -7,7 +7,7 @@ ENTITY fluxoDados IS
         VALUE_WIDTH    : NATURAL := 8;
         ROM_ADDR_WIDTH : NATURAL := 10;
         REG_ADDR_WIDTH : NATURAL := 4;
-        ROM_DATA_WIDTH : NATURAL := 21;
+        ROM_DATA_WIDTH : NATURAL := 17;
         OPCODE_WIDTH   : NATURAL := 3
     );
     PORT (
@@ -34,9 +34,8 @@ ARCHITECTURE arch_name OF fluxoDados IS
     SIGNAL saidaBancoReg         : std_logic_vector(VALUE_WIDTH - 1 DOWNTO 0);
     SIGNAL saidaULA_bancoReg     : std_logic_vector(VALUE_WIDTH - 1 DOWNTO 0);
 
-    ALIAS opCodeLocal  : std_logic_vector(OPCODE_WIDTH - 1 DOWNTO 0) IS Instrucao(20 DOWNTO 18);
-    ALIAS enderecoREGA : std_logic_vector(REG_ADDR_WIDTH - 1 DOWNTO 0) IS Instrucao(17 DOWNTO 14);
-    ALIAS enderecoREGB : std_logic_vector(REG_ADDR_WIDTH - 1 DOWNTO 0) IS Instrucao(13 DOWNTO 10);
+    ALIAS opCodeLocal  : std_logic_vector(OPCODE_WIDTH - 1 DOWNTO 0) IS Instrucao(16 DOWNTO 14);
+    ALIAS enderecoREG : std_logic_vector(REG_ADDR_WIDTH - 1 DOWNTO 0) IS Instrucao(13 DOWNTO 10);
     ALIAS enderecoJUMP : std_logic_vector(ROM_ADDR_WIDTH - 1 DOWNTO 0) IS Instrucao(9 DOWNTO 0);
     ALIAS imediato     : std_logic_vector(VALUE_WIDTH - 1 DOWNTO 0) IS Instrucao(7 DOWNTO 0);
 
@@ -123,18 +122,17 @@ BEGIN
         clear  => '0',
         preset => '0',
         q      => saidaFlopFlop);
+		  
+	 BancoRegistradores : entity work.bancoRegistradoresArqRegMem   
+	 generic map (larguraDados => VALUE_WIDTH, larguraEndBancoRegs => 4)
+          port map ( 
+				  clk => clk,
+              endereco => enderecoREG,
+              dadoEscrita => saidaULA_bancoReg,
+              habilitaEscrita => habEscritaBancoReg,
+              saida  => saidaBancoReg);
 
-    BancoRegistradores : ENTITY work.bancoRegistradoresArqRegReg
-        GENERIC MAP(
-            larguraDados => VALUE_WIDTH, larguraEndBancoRegs => 4
-        )
-        PORT MAP(
-            clk          => clk,
-            enderecoA    => enderecoREGA,
-            enderecoB    => enderecoREGB,
-            dadoEscritaB => saidaULA_bancoReg,
-            escreveB     => habEscritaBancoReg,
-            saida        => saidaBancoReg);
+
 
     opCode   <= opCodeLocal;
     dataOUT  <= saidaBancoReg;
