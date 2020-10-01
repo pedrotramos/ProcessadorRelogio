@@ -1,41 +1,39 @@
-library ieee;
-use ieee.std_logic_1164.all;
-use ieee.numeric_std.all;
+LIBRARY ieee;
+USE ieee.std_logic_1164.ALL;
+USE ieee.numeric_std.ALL;
 
-entity bancoRegistradoresArqRegMem is
-    generic
-    (
-        larguraDados        : natural := 8;
-        larguraEndBancoRegs : natural := 3   --Resulta em 2^3=8 posicoes
+ENTITY bancoRegistradoresArqRegMem IS
+    GENERIC (
+        larguraDados        : NATURAL := 8;
+        larguraEndBancoRegs : NATURAL := 3 --Resulta em 2^3=8 posicoes
     );
 
--- Leitura e escrita de um registrador.
-    port
-    (
-        clk        : in std_logic;
-        endereco       : in std_logic_vector((larguraEndBancoRegs-1) downto 0);
-        dadoEscrita    : in std_logic_vector((larguraDados-1) downto 0);
-        habilitaEscrita: in std_logic := '0';
-        saida          : out std_logic_vector((larguraDados -1) downto 0)
+    -- Leitura e escrita de um registrador.
+    PORT (
+        clk             : IN std_logic;
+        endereco        : IN std_logic_vector((larguraEndBancoRegs - 1) DOWNTO 0);
+        dadoEscrita     : IN std_logic_vector((larguraDados - 1) DOWNTO 0);
+        habilitaEscrita : IN std_logic := '0';
+        saida           : OUT std_logic_vector((larguraDados - 1) DOWNTO 0)
     );
-end entity;
+END ENTITY;
 
-architecture comportamento of bancoRegistradoresArqRegMem is
+ARCHITECTURE comportamento OF bancoRegistradoresArqRegMem IS
 
-    subtype palavra_t is std_logic_vector((larguraDados-1) downto 0);
-    type memoria_t is array(2**larguraEndBancoRegs-1 downto 0) of palavra_t;
+    SUBTYPE palavra_t IS std_logic_vector((larguraDados - 1) DOWNTO 0);
+    TYPE memoria_t IS ARRAY(2 ** larguraEndBancoRegs - 1 DOWNTO 0) OF palavra_t;
 
     -- Declaracao dos registradores:
-    shared variable registrador : memoria_t;
+    SHARED VARIABLE registrador : memoria_t;
 
-begin
-    process(clk) is
-    begin
-        if (rising_edge(clk)) then
-            if (habilitaEscrita = '1') then
+BEGIN
+    PROCESS (clk) IS
+    BEGIN
+        IF (rising_edge(clk)) THEN
+            IF (habilitaEscrita = '1') THEN
                 registrador(to_integer(unsigned(endereco))) := dadoEscrita;
-            end if;
-        end if;
-    end process;
-	 saida <= registrador(to_integer(unsigned(endereco)));
-end architecture;
+            END IF;
+        END IF;
+    END PROCESS;
+    saida <= registrador(to_integer(unsigned(endereco)));
+END ARCHITECTURE;

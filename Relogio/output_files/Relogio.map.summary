@@ -1,7 +1,7 @@
-Analysis & Elaboration Status : Successful - Thu Oct 01 11:33:37 2020
+Analysis & Elaboration Status : Successful - Thu Oct 01 18:26:19 2020
 Quartus Prime Version : 20.1.0 Build 711 06/05/2020 SJ Lite Edition
 Revision Name : Relogio
-Top-level Entity Name : processador
+Top-level Entity Name : Relogio
 Family : Cyclone V
 Logic utilization (in ALMs) : N/A until Partition Merge
 Total registers : N/A until Partition Merge

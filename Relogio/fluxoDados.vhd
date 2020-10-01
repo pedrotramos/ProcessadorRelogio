@@ -23,19 +23,19 @@ ENTITY fluxoDados IS
 END ENTITY;
 
 ARCHITECTURE arch_name OF fluxoDados IS
-    SIGNAL PC_ROM                : std_logic_vector(ROM_ADDR_WIDTH - 1 DOWNTO 0);
-    SIGNAL SomaUm_MuxProxPC      : std_logic_vector(ROM_ADDR_WIDTH - 1 DOWNTO 0);
-    SIGNAL MuxProxPC_PC          : std_logic_vector(ROM_ADDR_WIDTH - 1 DOWNTO 0);
-    SIGNAL selMuxProxPC_FlagZero : std_logic;
-    SIGNAL flagZero              : std_logic;
-    SIGNAL saidaFlopFlop         : std_logic;
-    SIGNAL Instrucao             : std_logic_vector(ROM_DATA_WIDTH - 1 DOWNTO 0);
-    SIGNAL muxIOImed_ULA         : std_logic_vector(VALUE_WIDTH - 1 DOWNTO 0);
-    SIGNAL saidaBancoReg         : std_logic_vector(VALUE_WIDTH - 1 DOWNTO 0);
-    SIGNAL saidaULA_bancoReg     : std_logic_vector(VALUE_WIDTH - 1 DOWNTO 0);
+    SIGNAL PC_ROM                 : std_logic_vector(ROM_ADDR_WIDTH - 1 DOWNTO 0);
+    SIGNAL SomaUm_MuxProxPC       : std_logic_vector(ROM_ADDR_WIDTH - 1 DOWNTO 0);
+    SIGNAL MuxProxPC_PC           : std_logic_vector(ROM_ADDR_WIDTH - 1 DOWNTO 0);
+    SIGNAL selMuxProxPC_FlagEqual : std_logic;
+    SIGNAL flagEqual              : std_logic;
+    SIGNAL saidaFlopFlop          : std_logic;
+    SIGNAL Instrucao              : std_logic_vector(ROM_DATA_WIDTH - 1 DOWNTO 0);
+    SIGNAL muxIOImed_ULA          : std_logic_vector(VALUE_WIDTH - 1 DOWNTO 0);
+    SIGNAL saidaBancoReg          : std_logic_vector(VALUE_WIDTH - 1 DOWNTO 0);
+    SIGNAL saidaULA_bancoReg      : std_logic_vector(VALUE_WIDTH - 1 DOWNTO 0);
 
     ALIAS opCodeLocal  : std_logic_vector(OPCODE_WIDTH - 1 DOWNTO 0) IS Instrucao(16 DOWNTO 14);
-    ALIAS enderecoREG : std_logic_vector(REG_ADDR_WIDTH - 1 DOWNTO 0) IS Instrucao(13 DOWNTO 10);
+    ALIAS enderecoREG  : std_logic_vector(REG_ADDR_WIDTH - 1 DOWNTO 0) IS Instrucao(13 DOWNTO 10);
     ALIAS enderecoJUMP : std_logic_vector(ROM_ADDR_WIDTH - 1 DOWNTO 0) IS Instrucao(9 DOWNTO 0);
     ALIAS imediato     : std_logic_vector(VALUE_WIDTH - 1 DOWNTO 0) IS Instrucao(7 DOWNTO 0);
 
@@ -67,11 +67,11 @@ BEGIN
         PORT MAP(
             entradaA_MUX => SomaUm_MuxProxPC,
             entradaB_MUX => enderecoJUMP,
-            seletor_MUX  => selMuxProxPC_FlagZero,
+            seletor_MUX  => selMuxProxPC_FlagEqual,
             saida_MUX    => MuxProxPC_PC
         );
 
-    selMuxProxPC_FlagZero <= selMuxProxPC OR (selJe AND saidaFlopFlop);
+    selMuxProxPC_FlagEqual <= selMuxProxPC OR (selJe AND saidaFlopFlop);
 
     somaUm : ENTITY work.somaConstante
         GENERIC MAP(
@@ -109,30 +109,28 @@ BEGIN
             larguraDados => VALUE_WIDTH
         )
         PORT MAP(
-            entradaA => muxIOImed_ULA,
-            entradaB => saidaBancoReg,
-            saida    => saidaULA_bancoReg,
-            seletor  => selOperacaoULA,
-            flagZero => flagZero
+            entradaA  => muxIOImed_ULA,
+            entradaB  => saidaBancoReg,
+            saida     => saidaULA_bancoReg,
+            seletor   => selOperacaoULA,
+            flagEqual => flagEqual
         );
 
     FlipFlop : ENTITY work.flipFlop PORT MAP(
         clock  => clk,
-        d      => flagZero,
+        d      => flagEqual,
         clear  => '0',
         preset => '0',
         q      => saidaFlopFlop);
-		  
-	 BancoRegistradores : entity work.bancoRegistradoresArqRegMem   
-	 generic map (larguraDados => VALUE_WIDTH, larguraEndBancoRegs => 4)
-          port map ( 
-				  clk => clk,
-              endereco => enderecoREG,
-              dadoEscrita => saidaULA_bancoReg,
-              habilitaEscrita => habEscritaBancoReg,
-              saida  => saidaBancoReg);
 
-
+    BancoRegistradores : ENTITY work.bancoRegistradoresArqRegMem
+        GENERIC MAP(larguraDados => VALUE_WIDTH, larguraEndBancoRegs => 4)
+        PORT MAP(
+            clk             => clk,
+            endereco        => enderecoREG,
+            dadoEscrita     => saidaULA_bancoReg,
+            habilitaEscrita => habEscritaBancoReg,
+            saida           => saidaBancoReg);
 
     opCode   <= opCodeLocal;
     dataOUT  <= saidaBancoReg;

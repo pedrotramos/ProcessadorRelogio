@@ -52,7 +52,7 @@ ARCHITECTURE arch_name OF Unidade_Controle IS
     -- sub        0         0         1                1                 001            0         0    0
     -- display    0         0         0                0                 000            0         0    1
     -- getIO      0         0         0                1                 010            0         1    0
-    -- je         ?         1         ?                ?                 ???            ?         ?    ?
+    -- je         0         1         x                x                 xxx            0         0    0
     -- mov        0         0         x                1                 011            0         0    0
 
 BEGIN
