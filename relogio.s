@@ -9,8 +9,8 @@ START:
     # Seta os registradores de hora_AMPM, minuto_AMPM e AM/PM.
     mov $2, %hu2
     mov $1, %hd2
-    mov $255, %empty # Define um espaço vazio.
-    mov $64, %ampm # 64 = A, 128 = P
+    mov $12, %empty # Define um espaço vazio.
+    mov $10, %ampm # 10 = A, 15 = P
 
 MAIN:
 SET_BASE:
@@ -120,18 +120,18 @@ AMPM_CHECK_HD12:
     jmp HU_P2
 
 AMPM_CHECK_AP11:
-    cmp $128, %ampm
+    cmp $15, %ampm
     je START
     add $1, %hu2
-    mov $128, %ampm
+    mov $15, %ampm
     jmp HU_P2
 
 AMPM_CHECK_AP12:
-    cmp $128, %ampm
+    cmp $15, %ampm
     je START
     mov $1, %hu2
     mov $0, %hd2
-    mov $128, %ampm
+    mov $15, %ampm
     jmp HU_P2
 
 HU2:
@@ -180,6 +180,7 @@ KEY3:
     getio $13, %key3
     cmp $0, %key3
     je SET_HD
+    jmp MAIN
 
 SET_HD:
     cmp $2, %hd
@@ -198,17 +199,42 @@ RST_HD:
 
 RST_HD2:
     sub $1, %hd2
+    cmp $15, %ampm
+    je TURN_AM
+    jmp TURN_PM
+
+TURN_AM:
+    mov $10, %ampm
     jmp MAIN
 
-######### parte nova #########
+TURN_PM:
+    mov $15, %ampm
+    jmp MAIN
+
 SET_HU:
-    cmp $4, %hu
+    cmp $9, %hu
     je RST_HU
+    cmp $3, %hu
+    je CHECK_END
     add $1, %hu
 
 SET_HU2:
-    cmp $2, %hu2
+    cmp $9, %hu2
     je RST_HU2
+    cmp $2, %hu2
+    je CHECK_END2
+    add $1, %hu2
+    jmp MAIN
+
+CHECK_END:
+    cmp $2, %hd
+    je RST_HU
+    add $1, %hu
+    jmp SET_HU2
+
+CHECK_END2:
+    cmp $1, %hd2
+    je RST_HU
     add $1, %hu2
     jmp MAIN
 
@@ -217,7 +243,7 @@ RST_HU:
     jmp SET_HU2
 
 RST_HU2:
-    sub $1, %hd2
+    mov $1, %hu2
     jmp MAIN
 
 SET_MD:
