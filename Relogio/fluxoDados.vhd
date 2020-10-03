@@ -116,12 +116,14 @@ BEGIN
             flagEqual => flagEqual
         );
 
-    FlipFlop : ENTITY work.flipFlop PORT MAP(
-        clock  => clk,
-        d      => flagEqual,
-        clear  => '0',
-        preset => '0',
-        q      => saidaFlopFlop);
+    guardaFlagEq : ENTITY work.flipFlop
+        PORT MAP(
+            DIN    => flagEqual,
+            DOUT   => saidaFlopFlop,
+            ENABLE => habFlipFlop,
+            CLK    => clk,
+            RST    => '0'
+        );
 
     BancoRegistradores : ENTITY work.bancoRegistradoresArqRegMem
         GENERIC MAP(larguraDados => VALUE_WIDTH, larguraEndBancoRegs => 4)

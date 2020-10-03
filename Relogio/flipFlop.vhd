@@ -1,26 +1,30 @@
-LIBRARY ieee;
-USE ieee.std_logic_1164.ALL;
+LIBRARY IEEE;
+USE IEEE.STD_LOGIC_1164.ALL;
 
 ENTITY flipFlop IS
+	GENERIC (
+		larguraDados : NATURAL := 8
+	);
 	PORT (
-		clock, d, clear, preset : IN std_logic;
-		q                       : OUT std_logic := '0'
+		DIN      : IN std_logic;
+		DOUT     : OUT std_logic;
+		ENABLE   : IN std_logic;
+		CLK, RST : IN std_logic
 	);
 END ENTITY;
 
-ARCHITECTURE arch OF flipFlop IS
+ARCHITECTURE comportamento OF flipFlop IS
 BEGIN
-
-	PROCESS (clock, clear, preset)
+	PROCESS (RST, CLK)
 	BEGIN
-		IF (clear = '1') THEN
-			q <= '0';
-		ELSIF (preset = '1') THEN
-			q <= '1';
-		ELSIF (rising_edge(clock)) THEN
-			q <= d;
+		IF (RST = '1') THEN
+			DOUT <= '0';
+		ELSE
+			IF (rising_edge(CLK)) THEN
+				IF (ENABLE = '1') THEN
+					DOUT <= DIN;
+				END IF;
+			END IF;
 		END IF;
-
 	END PROCESS;
-
 END ARCHITECTURE;

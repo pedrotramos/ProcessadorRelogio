@@ -1,11 +1,7 @@
 |Relogio
 CLOCK_50 => processador:Processador.clk
-CLOCK_50 => conversorhex7seg:DISPLAY0.clk
-CLOCK_50 => conversorhex7seg:DISPLAY1.clk
-CLOCK_50 => conversorhex7seg:DISPLAY2.clk
-CLOCK_50 => conversorhex7seg:DISPLAY3.clk
-CLOCK_50 => conversorhex7seg:DISPLAY4.clk
-CLOCK_50 => conversorhex7seg:DISPLAY5.clk
+CLOCK_50 => divisorgenerico_e_interface:interfaceBaseTempo.clk
+CLOCK_50 => interfacedisplays:Displays.clk
 SW[0] => interfacechaves:entradaChaves.entrada[0]
 SW[1] => interfacechaves:entradaChaves.entrada[1]
 SW[2] => interfacechaves:entradaChaves.entrada[2]
@@ -14,48 +10,6 @@ SW[4] => interfacechaves:entradaChaves.entrada[4]
 SW[5] => interfacechaves:entradaChaves.entrada[5]
 SW[6] => interfacechaves:entradaChaves.entrada[6]
 SW[7] => interfacechaves:entradaChaves.entrada[7]
-HEX0[0] << conversorhex7seg:DISPLAY0.saida7seg[0]
-HEX0[1] << conversorhex7seg:DISPLAY0.saida7seg[1]
-HEX0[2] << conversorhex7seg:DISPLAY0.saida7seg[2]
-HEX0[3] << conversorhex7seg:DISPLAY0.saida7seg[3]
-HEX0[4] << conversorhex7seg:DISPLAY0.saida7seg[4]
-HEX0[5] << conversorhex7seg:DISPLAY0.saida7seg[5]
-HEX0[6] << conversorhex7seg:DISPLAY0.saida7seg[6]
-HEX1[0] << conversorhex7seg:DISPLAY1.saida7seg[0]
-HEX1[1] << conversorhex7seg:DISPLAY1.saida7seg[1]
-HEX1[2] << conversorhex7seg:DISPLAY1.saida7seg[2]
-HEX1[3] << conversorhex7seg:DISPLAY1.saida7seg[3]
-HEX1[4] << conversorhex7seg:DISPLAY1.saida7seg[4]
-HEX1[5] << conversorhex7seg:DISPLAY1.saida7seg[5]
-HEX1[6] << conversorhex7seg:DISPLAY1.saida7seg[6]
-HEX2[0] << conversorhex7seg:DISPLAY2.saida7seg[0]
-HEX2[1] << conversorhex7seg:DISPLAY2.saida7seg[1]
-HEX2[2] << conversorhex7seg:DISPLAY2.saida7seg[2]
-HEX2[3] << conversorhex7seg:DISPLAY2.saida7seg[3]
-HEX2[4] << conversorhex7seg:DISPLAY2.saida7seg[4]
-HEX2[5] << conversorhex7seg:DISPLAY2.saida7seg[5]
-HEX2[6] << conversorhex7seg:DISPLAY2.saida7seg[6]
-HEX3[0] << conversorhex7seg:DISPLAY3.saida7seg[0]
-HEX3[1] << conversorhex7seg:DISPLAY3.saida7seg[1]
-HEX3[2] << conversorhex7seg:DISPLAY3.saida7seg[2]
-HEX3[3] << conversorhex7seg:DISPLAY3.saida7seg[3]
-HEX3[4] << conversorhex7seg:DISPLAY3.saida7seg[4]
-HEX3[5] << conversorhex7seg:DISPLAY3.saida7seg[5]
-HEX3[6] << conversorhex7seg:DISPLAY3.saida7seg[6]
-HEX4[0] << conversorhex7seg:DISPLAY4.saida7seg[0]
-HEX4[1] << conversorhex7seg:DISPLAY4.saida7seg[1]
-HEX4[2] << conversorhex7seg:DISPLAY4.saida7seg[2]
-HEX4[3] << conversorhex7seg:DISPLAY4.saida7seg[3]
-HEX4[4] << conversorhex7seg:DISPLAY4.saida7seg[4]
-HEX4[5] << conversorhex7seg:DISPLAY4.saida7seg[5]
-HEX4[6] << conversorhex7seg:DISPLAY4.saida7seg[6]
-HEX5[0] << conversorhex7seg:DISPLAY5.saida7seg[0]
-HEX5[1] << conversorhex7seg:DISPLAY5.saida7seg[1]
-HEX5[2] << conversorhex7seg:DISPLAY5.saida7seg[2]
-HEX5[3] << conversorhex7seg:DISPLAY5.saida7seg[3]
-HEX5[4] << conversorhex7seg:DISPLAY5.saida7seg[4]
-HEX5[5] << conversorhex7seg:DISPLAY5.saida7seg[5]
-HEX5[6] << conversorhex7seg:DISPLAY5.saida7seg[6]
 
 
 |Relogio|processador:Processador
@@ -87,7 +41,7 @@ outToDecode[7] <= fluxodados:FD.toDecode[7]
 
 |Relogio|processador:Processador|fluxoDados:FD
 clk => registradorgenerico:PC.CLK
-clk => flipflop:FlipFlop.clock
+clk => flipflop:guardaFlagEq.CLK
 clk => bancoregistradoresarqregmem:BancoRegistradores.clk
 dataIN[0] => muxgenerico2x1:muxIO_Imediato.entradaA_MUX[0]
 dataIN[1] => muxgenerico2x1:muxIO_Imediato.entradaA_MUX[1]
@@ -97,7 +51,7 @@ dataIN[4] => muxgenerico2x1:muxIO_Imediato.entradaA_MUX[4]
 dataIN[5] => muxgenerico2x1:muxIO_Imediato.entradaA_MUX[5]
 dataIN[6] => muxgenerico2x1:muxIO_Imediato.entradaA_MUX[6]
 dataIN[7] => muxgenerico2x1:muxIO_Imediato.entradaA_MUX[7]
-palavraControle[0] => ~NO_FANOUT~
+palavraControle[0] => flipflop:guardaFlagEq.ENABLE
 palavraControle[1] => ula:ULA.seletor[0]
 palavraControle[2] => ula:ULA.seletor[1]
 palavraControle[3] => ula:ULA.seletor[2]
@@ -474,13 +428,12 @@ saida[7] <= saida.DB_MAX_OUTPUT_PORT_TYPE
 flagEqual <= Equal8.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|Relogio|processador:Processador|fluxoDados:FD|flipFlop:FlipFlop
-clock => q~reg0.CLK
-d => q~reg0.DATAIN
-clear => q~reg0.ACLR
-clear => q.IN0
-preset => q.IN1
-q <= q~reg0.DB_MAX_OUTPUT_PORT_TYPE
+|Relogio|processador:Processador|fluxoDados:FD|flipFlop:guardaFlagEq
+DIN => DOUT~reg0.DATAIN
+DOUT <= DOUT~reg0.DB_MAX_OUTPUT_PORT_TYPE
+ENABLE => DOUT~reg0.ENA
+CLK => DOUT~reg0.CLK
+RST => DOUT~reg0.ACLR
 
 
 |Relogio|processador:Processador|fluxoDados:FD|bancoRegistradoresArqRegMem:BancoRegistradores
@@ -583,61 +536,106 @@ palavraControle[9] <= Mux6.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |Relogio|decodificador:Decodificador
-dataIN[0] => Equal0.IN4
+dataIN[0] => Equal0.IN7
 dataIN[0] => Equal1.IN7
 dataIN[0] => Equal2.IN6
 dataIN[0] => Equal3.IN7
-dataIN[0] => Equal4.IN5
+dataIN[0] => Equal4.IN6
 dataIN[0] => Equal5.IN7
 dataIN[0] => Equal6.IN5
 dataIN[0] => Equal7.IN7
 dataIN[0] => Equal8.IN5
 dataIN[0] => Equal9.IN7
-dataIN[0] => Equal10.IN7
-dataIN[1] => Equal0.IN7
+dataIN[0] => Equal10.IN5
+dataIN[0] => Equal11.IN7
+dataIN[0] => Equal12.IN4
+dataIN[0] => Equal13.IN7
+dataIN[0] => Equal14.IN6
+dataIN[0] => Equal15.IN7
+dataIN[0] => Equal16.IN5
+dataIN[0] => Equal17.IN7
+dataIN[0] => Equal18.IN5
+dataIN[0] => Equal19.IN7
+dataIN[1] => Equal0.IN6
 dataIN[1] => Equal1.IN6
-dataIN[1] => Equal2.IN5
-dataIN[1] => Equal3.IN5
-dataIN[1] => Equal4.IN7
-dataIN[1] => Equal5.IN6
+dataIN[1] => Equal2.IN7
+dataIN[1] => Equal3.IN6
+dataIN[1] => Equal4.IN5
+dataIN[1] => Equal5.IN5
 dataIN[1] => Equal6.IN7
 dataIN[1] => Equal7.IN6
-dataIN[1] => Equal8.IN4
-dataIN[1] => Equal9.IN4
-dataIN[1] => Equal10.IN6
-dataIN[2] => Equal0.IN6
+dataIN[1] => Equal8.IN7
+dataIN[1] => Equal9.IN6
+dataIN[1] => Equal10.IN4
+dataIN[1] => Equal11.IN4
+dataIN[1] => Equal12.IN7
+dataIN[1] => Equal13.IN6
+dataIN[1] => Equal14.IN5
+dataIN[1] => Equal15.IN5
+dataIN[1] => Equal16.IN7
+dataIN[1] => Equal17.IN6
+dataIN[1] => Equal18.IN4
+dataIN[1] => Equal19.IN4
+dataIN[2] => Equal0.IN5
 dataIN[2] => Equal1.IN5
-dataIN[2] => Equal2.IN4
-dataIN[2] => Equal3.IN4
-dataIN[2] => Equal4.IN4
-dataIN[2] => Equal5.IN4
-dataIN[2] => Equal6.IN4
-dataIN[2] => Equal7.IN4
-dataIN[2] => Equal8.IN7
-dataIN[2] => Equal9.IN6
-dataIN[2] => Equal10.IN5
-dataIN[3] => Equal0.IN5
+dataIN[2] => Equal2.IN5
+dataIN[2] => Equal3.IN5
+dataIN[2] => Equal4.IN7
+dataIN[2] => Equal5.IN6
+dataIN[2] => Equal6.IN6
+dataIN[2] => Equal7.IN5
+dataIN[2] => Equal8.IN4
+dataIN[2] => Equal9.IN4
+dataIN[2] => Equal10.IN7
+dataIN[2] => Equal11.IN6
+dataIN[2] => Equal12.IN6
+dataIN[2] => Equal13.IN5
+dataIN[2] => Equal14.IN4
+dataIN[2] => Equal15.IN4
+dataIN[2] => Equal16.IN4
+dataIN[2] => Equal17.IN4
+dataIN[2] => Equal18.IN7
+dataIN[2] => Equal19.IN6
+dataIN[3] => Equal0.IN4
 dataIN[3] => Equal1.IN4
-dataIN[3] => Equal2.IN3
-dataIN[3] => Equal3.IN3
-dataIN[3] => Equal4.IN3
-dataIN[3] => Equal5.IN3
-dataIN[3] => Equal6.IN6
-dataIN[3] => Equal7.IN5
+dataIN[3] => Equal2.IN4
+dataIN[3] => Equal3.IN4
+dataIN[3] => Equal4.IN4
+dataIN[3] => Equal5.IN4
+dataIN[3] => Equal6.IN4
+dataIN[3] => Equal7.IN4
 dataIN[3] => Equal8.IN6
 dataIN[3] => Equal9.IN5
-dataIN[3] => Equal10.IN4
+dataIN[3] => Equal10.IN6
+dataIN[3] => Equal11.IN5
+dataIN[3] => Equal12.IN5
+dataIN[3] => Equal13.IN4
+dataIN[3] => Equal14.IN3
+dataIN[3] => Equal15.IN3
+dataIN[3] => Equal16.IN3
+dataIN[3] => Equal17.IN3
+dataIN[3] => Equal18.IN3
+dataIN[3] => Equal19.IN3
 dataIN[4] => Equal0.IN3
 dataIN[4] => Equal1.IN3
-dataIN[4] => Equal2.IN7
-dataIN[4] => Equal3.IN6
-dataIN[4] => Equal4.IN6
-dataIN[4] => Equal5.IN5
+dataIN[4] => Equal2.IN3
+dataIN[4] => Equal3.IN3
+dataIN[4] => Equal4.IN3
+dataIN[4] => Equal5.IN3
 dataIN[4] => Equal6.IN3
 dataIN[4] => Equal7.IN3
 dataIN[4] => Equal8.IN3
 dataIN[4] => Equal9.IN3
 dataIN[4] => Equal10.IN3
+dataIN[4] => Equal11.IN3
+dataIN[4] => Equal12.IN3
+dataIN[4] => Equal13.IN3
+dataIN[4] => Equal14.IN7
+dataIN[4] => Equal15.IN6
+dataIN[4] => Equal16.IN6
+dataIN[4] => Equal17.IN5
+dataIN[4] => Equal18.IN6
+dataIN[4] => Equal19.IN5
 dataIN[5] => Equal0.IN2
 dataIN[5] => Equal1.IN2
 dataIN[5] => Equal2.IN2
@@ -649,6 +647,15 @@ dataIN[5] => Equal7.IN2
 dataIN[5] => Equal8.IN2
 dataIN[5] => Equal9.IN2
 dataIN[5] => Equal10.IN2
+dataIN[5] => Equal11.IN2
+dataIN[5] => Equal12.IN2
+dataIN[5] => Equal13.IN2
+dataIN[5] => Equal14.IN2
+dataIN[5] => Equal15.IN2
+dataIN[5] => Equal16.IN2
+dataIN[5] => Equal17.IN2
+dataIN[5] => Equal18.IN2
+dataIN[5] => Equal19.IN2
 dataIN[6] => Equal0.IN1
 dataIN[6] => Equal1.IN1
 dataIN[6] => Equal2.IN1
@@ -660,6 +667,15 @@ dataIN[6] => Equal7.IN1
 dataIN[6] => Equal8.IN1
 dataIN[6] => Equal9.IN1
 dataIN[6] => Equal10.IN1
+dataIN[6] => Equal11.IN1
+dataIN[6] => Equal12.IN1
+dataIN[6] => Equal13.IN1
+dataIN[6] => Equal14.IN1
+dataIN[6] => Equal15.IN1
+dataIN[6] => Equal16.IN1
+dataIN[6] => Equal17.IN1
+dataIN[6] => Equal18.IN1
+dataIN[6] => Equal19.IN1
 dataIN[7] => Equal0.IN0
 dataIN[7] => Equal1.IN0
 dataIN[7] => Equal2.IN0
@@ -671,17 +687,35 @@ dataIN[7] => Equal7.IN0
 dataIN[7] => Equal8.IN0
 dataIN[7] => Equal9.IN0
 dataIN[7] => Equal10.IN0
-store => habilitaDsp.DATAB
-store => habilitaDsp.DATAB
-store => habilitaDsp.DATAB
-store => habilitaDsp.DATAB
-store => habilitaDsp.DATAB
-store => habilitaDsp.DATAB
-load => habilitaKey.DATAB
-load => habilitaKey.DATAB
-load => habilitaKey.DATAB
-load => habilitaKey.DATAB
-load => habilitaSW.DATAB
+dataIN[7] => Equal11.IN0
+dataIN[7] => Equal12.IN0
+dataIN[7] => Equal13.IN0
+dataIN[7] => Equal14.IN0
+dataIN[7] => Equal15.IN0
+dataIN[7] => Equal16.IN0
+dataIN[7] => Equal17.IN0
+dataIN[7] => Equal18.IN0
+dataIN[7] => Equal19.IN0
+store => habilitaDsp.IN1
+store => habilitaDsp.IN1
+store => habilitaDsp.IN1
+store => habilitaDsp.IN1
+store => habilitaDsp.IN1
+store => habilitaDsp.IN1
+load => habilitaSW.IN1
+load => habilitaSW.IN1
+load => habilitaSW.IN1
+load => habilitaSW.IN1
+load => habilitaSW.IN1
+load => habilitaSW.IN1
+load => habilitaSW.IN1
+load => habilitaSW.IN1
+load => habilitaKey.IN1
+load => habilitaKey.IN1
+load => habilitaKey.IN1
+load => habilitaKey.IN1
+load => habilitaBtempo.IN1
+load => clearBtempo.IN1
 habilitaDsp[0] <= habilitaDsp.DB_MAX_OUTPUT_PORT_TYPE
 habilitaDsp[1] <= habilitaDsp.DB_MAX_OUTPUT_PORT_TYPE
 habilitaDsp[2] <= habilitaDsp.DB_MAX_OUTPUT_PORT_TYPE
@@ -692,7 +726,16 @@ habilitaKey[0] <= habilitaKey.DB_MAX_OUTPUT_PORT_TYPE
 habilitaKey[1] <= habilitaKey.DB_MAX_OUTPUT_PORT_TYPE
 habilitaKey[2] <= habilitaKey.DB_MAX_OUTPUT_PORT_TYPE
 habilitaKey[3] <= habilitaKey.DB_MAX_OUTPUT_PORT_TYPE
-habilitaSW <= habilitaSW.DB_MAX_OUTPUT_PORT_TYPE
+habilitaSW[0] <= habilitaSW.DB_MAX_OUTPUT_PORT_TYPE
+habilitaSW[1] <= habilitaSW.DB_MAX_OUTPUT_PORT_TYPE
+habilitaSW[2] <= habilitaSW.DB_MAX_OUTPUT_PORT_TYPE
+habilitaSW[3] <= habilitaSW.DB_MAX_OUTPUT_PORT_TYPE
+habilitaSW[4] <= habilitaSW.DB_MAX_OUTPUT_PORT_TYPE
+habilitaSW[5] <= habilitaSW.DB_MAX_OUTPUT_PORT_TYPE
+habilitaSW[6] <= habilitaSW.DB_MAX_OUTPUT_PORT_TYPE
+habilitaSW[7] <= habilitaSW.DB_MAX_OUTPUT_PORT_TYPE
+habilitaBtempo <= habilitaBtempo.DB_MAX_OUTPUT_PORT_TYPE
+clearBtempo <= clearBtempo.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |Relogio|interfaceCHAVES:entradaChaves
@@ -704,14 +747,21 @@ entrada[4] => saida[4].DATAIN
 entrada[5] => saida[5].DATAIN
 entrada[6] => saida[6].DATAIN
 entrada[7] => saida[7].DATAIN
-habilita => saida[0].OE
-habilita => saida[1].OE
-habilita => saida[2].OE
-habilita => saida[3].OE
-habilita => saida[4].OE
-habilita => saida[5].OE
-habilita => saida[6].OE
-habilita => saida[7].OE
+habilita[0] => saida[0].OE
+habilita[0] => saida[1].OE
+habilita[0] => saida[2].OE
+habilita[0] => saida[3].OE
+habilita[0] => saida[4].OE
+habilita[0] => saida[5].OE
+habilita[0] => saida[6].OE
+habilita[0] => saida[7].OE
+habilita[1] => ~NO_FANOUT~
+habilita[2] => ~NO_FANOUT~
+habilita[3] => ~NO_FANOUT~
+habilita[4] => ~NO_FANOUT~
+habilita[5] => ~NO_FANOUT~
+habilita[6] => ~NO_FANOUT~
+habilita[7] => ~NO_FANOUT~
 saida[0] <= saida[0].DB_MAX_OUTPUT_PORT_TYPE
 saida[1] <= saida[1].DB_MAX_OUTPUT_PORT_TYPE
 saida[2] <= saida[2].DB_MAX_OUTPUT_PORT_TYPE
@@ -722,7 +772,111 @@ saida[6] <= saida[6].DB_MAX_OUTPUT_PORT_TYPE
 saida[7] <= saida[7].DB_MAX_OUTPUT_PORT_TYPE
 
 
-|Relogio|conversorHex7Seg:DISPLAY0
+|Relogio|divisorGenerico_e_Interface:interfaceBaseTempo
+clk => divisorgenerico:baseTempo.clk
+habilitaLeitura => leituraUmSegundo.OE
+limpaLeitura => flipflop:registra1Segundo.RST
+leituraUmSegundo <= leituraUmSegundo.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Relogio|divisorGenerico_e_Interface:interfaceBaseTempo|divisorGenerico:baseTempo
+clk => tick.CLK
+clk => contador[0].CLK
+clk => contador[1].CLK
+clk => contador[2].CLK
+saida_clk <= tick.DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Relogio|divisorGenerico_e_Interface:interfaceBaseTempo|flipFlop:registra1Segundo
+DIN => DOUT~reg0.DATAIN
+DOUT <= DOUT~reg0.DB_MAX_OUTPUT_PORT_TYPE
+ENABLE => DOUT~reg0.ENA
+CLK => DOUT~reg0.CLK
+RST => DOUT~reg0.ACLR
+
+
+|Relogio|interfaceDISPLAYS:Displays
+dataIN[0] => conversorhex7seg:DISPLAY0.dadoHex[0]
+dataIN[0] => conversorhex7seg:DISPLAY1.dadoHex[0]
+dataIN[0] => conversorhex7seg:DISPLAY2.dadoHex[0]
+dataIN[0] => conversorhex7seg:DISPLAY3.dadoHex[0]
+dataIN[0] => conversorhex7seg:DISPLAY4.dadoHex[0]
+dataIN[0] => conversorhex7seg:DISPLAY5.dadoHex[0]
+dataIN[1] => conversorhex7seg:DISPLAY0.dadoHex[1]
+dataIN[1] => conversorhex7seg:DISPLAY1.dadoHex[1]
+dataIN[1] => conversorhex7seg:DISPLAY2.dadoHex[1]
+dataIN[1] => conversorhex7seg:DISPLAY3.dadoHex[1]
+dataIN[1] => conversorhex7seg:DISPLAY4.dadoHex[1]
+dataIN[1] => conversorhex7seg:DISPLAY5.dadoHex[1]
+dataIN[2] => conversorhex7seg:DISPLAY0.dadoHex[2]
+dataIN[2] => conversorhex7seg:DISPLAY1.dadoHex[2]
+dataIN[2] => conversorhex7seg:DISPLAY2.dadoHex[2]
+dataIN[2] => conversorhex7seg:DISPLAY3.dadoHex[2]
+dataIN[2] => conversorhex7seg:DISPLAY4.dadoHex[2]
+dataIN[2] => conversorhex7seg:DISPLAY5.dadoHex[2]
+dataIN[3] => conversorhex7seg:DISPLAY0.dadoHex[3]
+dataIN[3] => conversorhex7seg:DISPLAY1.dadoHex[3]
+dataIN[3] => conversorhex7seg:DISPLAY2.dadoHex[3]
+dataIN[3] => conversorhex7seg:DISPLAY3.dadoHex[3]
+dataIN[3] => conversorhex7seg:DISPLAY4.dadoHex[3]
+dataIN[3] => conversorhex7seg:DISPLAY5.dadoHex[3]
+enable[0] => conversorhex7seg:DISPLAY0.habilita
+enable[1] => conversorhex7seg:DISPLAY1.habilita
+enable[2] => conversorhex7seg:DISPLAY2.habilita
+enable[3] => conversorhex7seg:DISPLAY3.habilita
+enable[4] => conversorhex7seg:DISPLAY4.habilita
+enable[5] => conversorhex7seg:DISPLAY5.habilita
+clk => conversorhex7seg:DISPLAY0.clk
+clk => conversorhex7seg:DISPLAY1.clk
+clk => conversorhex7seg:DISPLAY2.clk
+clk => conversorhex7seg:DISPLAY3.clk
+clk => conversorhex7seg:DISPLAY4.clk
+clk => conversorhex7seg:DISPLAY5.clk
+HEX0[0] <= conversorhex7seg:DISPLAY0.saida7seg[0]
+HEX0[1] <= conversorhex7seg:DISPLAY0.saida7seg[1]
+HEX0[2] <= conversorhex7seg:DISPLAY0.saida7seg[2]
+HEX0[3] <= conversorhex7seg:DISPLAY0.saida7seg[3]
+HEX0[4] <= conversorhex7seg:DISPLAY0.saida7seg[4]
+HEX0[5] <= conversorhex7seg:DISPLAY0.saida7seg[5]
+HEX0[6] <= conversorhex7seg:DISPLAY0.saida7seg[6]
+HEX1[0] <= conversorhex7seg:DISPLAY1.saida7seg[0]
+HEX1[1] <= conversorhex7seg:DISPLAY1.saida7seg[1]
+HEX1[2] <= conversorhex7seg:DISPLAY1.saida7seg[2]
+HEX1[3] <= conversorhex7seg:DISPLAY1.saida7seg[3]
+HEX1[4] <= conversorhex7seg:DISPLAY1.saida7seg[4]
+HEX1[5] <= conversorhex7seg:DISPLAY1.saida7seg[5]
+HEX1[6] <= conversorhex7seg:DISPLAY1.saida7seg[6]
+HEX2[0] <= conversorhex7seg:DISPLAY2.saida7seg[0]
+HEX2[1] <= conversorhex7seg:DISPLAY2.saida7seg[1]
+HEX2[2] <= conversorhex7seg:DISPLAY2.saida7seg[2]
+HEX2[3] <= conversorhex7seg:DISPLAY2.saida7seg[3]
+HEX2[4] <= conversorhex7seg:DISPLAY2.saida7seg[4]
+HEX2[5] <= conversorhex7seg:DISPLAY2.saida7seg[5]
+HEX2[6] <= conversorhex7seg:DISPLAY2.saida7seg[6]
+HEX3[0] <= conversorhex7seg:DISPLAY3.saida7seg[0]
+HEX3[1] <= conversorhex7seg:DISPLAY3.saida7seg[1]
+HEX3[2] <= conversorhex7seg:DISPLAY3.saida7seg[2]
+HEX3[3] <= conversorhex7seg:DISPLAY3.saida7seg[3]
+HEX3[4] <= conversorhex7seg:DISPLAY3.saida7seg[4]
+HEX3[5] <= conversorhex7seg:DISPLAY3.saida7seg[5]
+HEX3[6] <= conversorhex7seg:DISPLAY3.saida7seg[6]
+HEX4[0] <= conversorhex7seg:DISPLAY4.saida7seg[0]
+HEX4[1] <= conversorhex7seg:DISPLAY4.saida7seg[1]
+HEX4[2] <= conversorhex7seg:DISPLAY4.saida7seg[2]
+HEX4[3] <= conversorhex7seg:DISPLAY4.saida7seg[3]
+HEX4[4] <= conversorhex7seg:DISPLAY4.saida7seg[4]
+HEX4[5] <= conversorhex7seg:DISPLAY4.saida7seg[5]
+HEX4[6] <= conversorhex7seg:DISPLAY4.saida7seg[6]
+HEX5[0] <= conversorhex7seg:DISPLAY5.saida7seg[0]
+HEX5[1] <= conversorhex7seg:DISPLAY5.saida7seg[1]
+HEX5[2] <= conversorhex7seg:DISPLAY5.saida7seg[2]
+HEX5[3] <= conversorhex7seg:DISPLAY5.saida7seg[3]
+HEX5[4] <= conversorhex7seg:DISPLAY5.saida7seg[4]
+HEX5[5] <= conversorhex7seg:DISPLAY5.saida7seg[5]
+HEX5[6] <= conversorhex7seg:DISPLAY5.saida7seg[6]
+
+
+|Relogio|interfaceDISPLAYS:Displays|conversorHex7Seg:DISPLAY0
 dadoHex[0] => Equal0.IN3
 dadoHex[0] => Equal1.IN3
 dadoHex[0] => Equal2.IN1
@@ -798,7 +952,7 @@ saida7seg[5] <= saida7seg[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 saida7seg[6] <= saida7seg[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|Relogio|conversorHex7Seg:DISPLAY1
+|Relogio|interfaceDISPLAYS:Displays|conversorHex7Seg:DISPLAY1
 dadoHex[0] => Equal0.IN3
 dadoHex[0] => Equal1.IN3
 dadoHex[0] => Equal2.IN1
@@ -874,7 +1028,7 @@ saida7seg[5] <= saida7seg[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 saida7seg[6] <= saida7seg[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|Relogio|conversorHex7Seg:DISPLAY2
+|Relogio|interfaceDISPLAYS:Displays|conversorHex7Seg:DISPLAY2
 dadoHex[0] => Equal0.IN3
 dadoHex[0] => Equal1.IN3
 dadoHex[0] => Equal2.IN1
@@ -950,7 +1104,7 @@ saida7seg[5] <= saida7seg[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 saida7seg[6] <= saida7seg[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|Relogio|conversorHex7Seg:DISPLAY3
+|Relogio|interfaceDISPLAYS:Displays|conversorHex7Seg:DISPLAY3
 dadoHex[0] => Equal0.IN3
 dadoHex[0] => Equal1.IN3
 dadoHex[0] => Equal2.IN1
@@ -1026,7 +1180,7 @@ saida7seg[5] <= saida7seg[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 saida7seg[6] <= saida7seg[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|Relogio|conversorHex7Seg:DISPLAY4
+|Relogio|interfaceDISPLAYS:Displays|conversorHex7Seg:DISPLAY4
 dadoHex[0] => Equal0.IN3
 dadoHex[0] => Equal1.IN3
 dadoHex[0] => Equal2.IN1
@@ -1102,7 +1256,7 @@ saida7seg[5] <= saida7seg[5]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 saida7seg[6] <= saida7seg[6]~reg0.DB_MAX_OUTPUT_PORT_TYPE
 
 
-|Relogio|conversorHex7Seg:DISPLAY5
+|Relogio|interfaceDISPLAYS:Displays|conversorHex7Seg:DISPLAY5
 dadoHex[0] => Equal0.IN3
 dadoHex[0] => Equal1.IN3
 dadoHex[0] => Equal2.IN1

@@ -14,38 +14,71 @@ ENTITY decodificador IS
     store  : IN std_logic; --PRA QUE
     load   : IN std_logic; --PRA QUE
     -- Output ports
-    habilitaDsp : OUT std_logic_vector(5 DOWNTO 0);
-    habilitaKey : OUT std_logic_vector(3 DOWNTO 0);
-    habilitaSW  : OUT std_logic
-    -- habilitaBt  : OUT std_logic_vector(1 DOWNTO 0);
+    habilitaDsp    : OUT std_logic_vector(5 DOWNTO 0);
+    habilitaKey    : OUT std_logic_vector(3 DOWNTO 0);
+    habilitaSW     : OUT std_logic_vector(7 DOWNTO 0);
+    habilitaBtempo : OUT std_logic;
+    clearBtempo    : OUT std_logic
   );
 END ENTITY;
 ARCHITECTURE arch_name OF decodificador IS
 
+  -- Mapa de memoria
+  -- sw: 1 endereco p/ cada       [x00 ~ x09]
+  -- keys: 1 endereco p/ cada     [x0A ~ x0D]
+  -- displays: 1 endereco p/ cada [x0E ~ x13]
+  -- base tempo: 1 endereco       [x14]
+  -- limpa base tempo: 1 endereco [x15]
+  -- 
+  -- 
 BEGIN
-  habilitaDsp(0) <= ('1' AND store) WHEN DataIN = x"0E" ELSE -- Display unidade segundo
+  habilitaSW(0) <= '1' WHEN (DataIN = x"00" AND load = '1') ELSE -- SW[0]: seleciona AM/PM ou 24h
   '0';
-  habilitaDsp(1) <= ('1' AND store) WHEN DataIN = x"0F" ELSE -- Display dezena segundo
+  habilitaSW(1) <= '1' WHEN (DataIN = x"01" AND load = '1') ELSE -- SW[1]: sem funcionalidade
   '0';
-  habilitaDsp(2) <= ('1' AND store) WHEN DataIN = x"10" ELSE -- Display unidade minuto
+  habilitaSW(2) <= '1' WHEN (DataIN = x"02" AND load = '1') ELSE -- SW[2]: ativa configuracao para incrementos
   '0';
-  habilitaDsp(3) <= ('1' AND store) WHEN DataIN = x"11" ELSE -- Display dezena minuto
+  habilitaSW(3) <= '1' WHEN (DataIN = x"03" AND load = '1') ELSE -- SW[3]: sem funcionalidade
   '0';
-  habilitaDsp(4) <= ('1' AND store) WHEN DataIN = x"12" ELSE -- Display unidade hora
+  habilitaSW(4) <= '1' WHEN (DataIN = x"04" AND load = '1') ELSE -- SW[4]: sem funcionalidade
   '0';
-  habilitaDsp(5) <= ('1' AND store) WHEN DataIN = x"13" ELSE -- Display dezena hora
+  habilitaSW(5) <= '1' WHEN (DataIN = x"05" AND load = '1') ELSE -- SW[5]: sem funcionalidade
+  '0';
+  habilitaSW(6) <= '1' WHEN (DataIN = x"06" AND load = '1') ELSE -- SW[6]: sem funcionalidade
+  '0';
+  habilitaSW(7) <= '1' WHEN (DataIN = x"07" AND load = '1') ELSE -- SW[7]: sem funcionalidade
+  '0';
+  -- habilitaSW(8) <= '1' WHEN (DataIN = x"08" AND load = '1') ELSE -- SW[8]: sem funcionalidade
+  -- '0';
+  -- habilitaSW(9) <= '1' WHEN (DataIN = x"09" AND load = '1') ELSE -- SW[9]: sem funcionalidade
+  -- '0';
+
+  habilitaKey(0) <= '1' WHEN (DataIN = x"0A" AND load = '1') ELSE -- Botao incrementa unidade minuto
+  '0';
+  habilitaKey(1) <= '1' WHEN (DataIN = x"0B" AND load = '1') ELSE -- Botao incrementa dezena minuto
+  '0';
+  habilitaKey(2) <= '1' WHEN (DataIN = x"0C" AND load = '1') ELSE -- Botao incrementa unidade hora
+  '0';
+  habilitaKey(3) <= '1' WHEN (DataIN = x"0D" AND load = '1') ELSE -- Botao incrementa dezena hora
   '0';
 
-  habilitaKey(0) <= ('1' AND load) WHEN DataIN = x"0A" ELSE -- Botao incrementa unidade minuto
+  habilitaDsp(0) <= '1' WHEN (DataIN = x"0E" AND store = '1') ELSE -- Display unidade segundo 
   '0';
-  habilitaKey(1) <= ('1' AND load) WHEN DataIN = x"0B" ELSE -- Botao incrementa dezena minuto
+  habilitaDsp(1) <= '1' WHEN (DataIN = x"0F" AND store = '1') ELSE -- Display dezena segundo
   '0';
-  habilitaKey(2) <= ('1' AND load) WHEN DataIN = x"0C" ELSE -- Botao incrementa unidade hora
+  habilitaDsp(2) <= '1' WHEN (DataIN = x"10" AND store = '1') ELSE -- Display unidade minuto
   '0';
-  habilitaKey(3) <= ('1' AND load) WHEN DataIN = x"0D" ELSE -- Botao incrementa dezena hora
+  habilitaDsp(3) <= '1' WHEN (DataIN = x"11" AND store = '1') ELSE -- Display dezena minuto
+  '0';
+  habilitaDsp(4) <= '1' WHEN (DataIN = x"12" AND store = '1') ELSE -- Display unidade hora
+  '0';
+  habilitaDsp(5) <= '1' WHEN (DataIN = x"13" AND store = '1') ELSE -- Display dezena hora
   '0';
 
-  habilitaSW <= ('1' AND load) WHEN DataIN = x"00" ELSE
+  habilitaBtempo <= '1' WHEN (DataIN = x"14" AND load = '1') ELSE
+    '0';
+
+  clearBtempo <= '1' WHEN (DataIN = x"15" AND load = '1') ELSE -- Limpa base de tempo -> loadio  
     '0';
 
 END ARCHITECTURE;
