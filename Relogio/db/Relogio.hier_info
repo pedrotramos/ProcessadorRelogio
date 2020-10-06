@@ -10,6 +10,10 @@ SW[4] => interfacechaves:entradaChaves.entrada[4]
 SW[5] => interfacechaves:entradaChaves.entrada[5]
 SW[6] => interfacechaves:entradaChaves.entrada[6]
 SW[7] => interfacechaves:entradaChaves.entrada[7]
+KEY[0] => interfacebotoes:entradaBotoes.entrada[0]
+KEY[1] => interfacebotoes:entradaBotoes.entrada[1]
+KEY[2] => interfacebotoes:entradaBotoes.entrada[2]
+KEY[3] => interfacebotoes:entradaBotoes.entrada[3]
 
 
 |Relogio|processador:Processador
@@ -739,29 +743,51 @@ clearBtempo <= clearBtempo.DB_MAX_OUTPUT_PORT_TYPE
 
 
 |Relogio|interfaceCHAVES:entradaChaves
-entrada[0] => saida[0].DATAIN
-entrada[1] => saida[1].DATAIN
-entrada[2] => saida[2].DATAIN
-entrada[3] => saida[3].DATAIN
-entrada[4] => saida[4].DATAIN
-entrada[5] => saida[5].DATAIN
-entrada[6] => saida[6].DATAIN
-entrada[7] => saida[7].DATAIN
-habilita[0] => saida[0].OE
-habilita[0] => saida[1].OE
-habilita[0] => saida[2].OE
-habilita[0] => saida[3].OE
-habilita[0] => saida[4].OE
-habilita[0] => saida[5].OE
-habilita[0] => saida[6].OE
-habilita[0] => saida[7].OE
-habilita[1] => ~NO_FANOUT~
-habilita[2] => ~NO_FANOUT~
-habilita[3] => ~NO_FANOUT~
-habilita[4] => ~NO_FANOUT~
-habilita[5] => ~NO_FANOUT~
-habilita[6] => ~NO_FANOUT~
-habilita[7] => ~NO_FANOUT~
+entrada[0] => saida[0].DATAB
+entrada[1] => saida[0].DATAB
+entrada[2] => saida[0].DATAB
+entrada[3] => saida[0].DATAB
+entrada[4] => saida[0].DATAB
+entrada[5] => saida[0].DATAB
+entrada[6] => saida[0].DATAB
+entrada[7] => saida[0].DATAA
+habilita[0] => saida[0].OUTPUTSELECT
+habilita[0] => saida[7].IN1
+habilita[1] => saida[0].OUTPUTSELECT
+habilita[1] => saida[7].IN1
+habilita[2] => saida[0].OUTPUTSELECT
+habilita[2] => saida[7].IN1
+habilita[3] => saida[0].OUTPUTSELECT
+habilita[3] => saida[7].IN1
+habilita[4] => saida[0].OUTPUTSELECT
+habilita[4] => saida[7].IN1
+habilita[5] => saida[0].OUTPUTSELECT
+habilita[5] => saida[7].IN1
+habilita[6] => saida[0].OUTPUTSELECT
+habilita[6] => saida[7].IN0
+habilita[7] => saida[7].IN1
+saida[0] <= saida[0].DB_MAX_OUTPUT_PORT_TYPE
+saida[1] <= saida[1].DB_MAX_OUTPUT_PORT_TYPE
+saida[2] <= saida[2].DB_MAX_OUTPUT_PORT_TYPE
+saida[3] <= saida[3].DB_MAX_OUTPUT_PORT_TYPE
+saida[4] <= saida[4].DB_MAX_OUTPUT_PORT_TYPE
+saida[5] <= saida[5].DB_MAX_OUTPUT_PORT_TYPE
+saida[6] <= saida[6].DB_MAX_OUTPUT_PORT_TYPE
+saida[7] <= saida[7].DB_MAX_OUTPUT_PORT_TYPE
+
+
+|Relogio|interfaceBOTOES:entradaBotoes
+entrada[0] => saida[0].DATAB
+entrada[1] => saida[0].DATAB
+entrada[2] => saida[0].DATAB
+entrada[3] => saida[0].DATAA
+habilita[0] => saida[0].OUTPUTSELECT
+habilita[0] => saida[7].IN1
+habilita[1] => saida[0].OUTPUTSELECT
+habilita[1] => saida[7].IN1
+habilita[2] => saida[0].OUTPUTSELECT
+habilita[2] => saida[7].IN0
+habilita[3] => saida[7].IN1
 saida[0] <= saida[0].DB_MAX_OUTPUT_PORT_TYPE
 saida[1] <= saida[1].DB_MAX_OUTPUT_PORT_TYPE
 saida[2] <= saida[2].DB_MAX_OUTPUT_PORT_TYPE
@@ -774,9 +800,23 @@ saida[7] <= saida[7].DB_MAX_OUTPUT_PORT_TYPE
 
 |Relogio|divisorGenerico_e_Interface:interfaceBaseTempo
 clk => divisorgenerico:baseTempo.clk
-habilitaLeitura => leituraUmSegundo.OE
+habilitaLeitura => leituraUmSegundo[0].OE
+habilitaLeitura => leituraUmSegundo[1].OE
+habilitaLeitura => leituraUmSegundo[2].OE
+habilitaLeitura => leituraUmSegundo[3].OE
+habilitaLeitura => leituraUmSegundo[4].OE
+habilitaLeitura => leituraUmSegundo[5].OE
+habilitaLeitura => leituraUmSegundo[6].OE
+habilitaLeitura => leituraUmSegundo[7].OE
 limpaLeitura => flipflop:registra1Segundo.RST
-leituraUmSegundo <= leituraUmSegundo.DB_MAX_OUTPUT_PORT_TYPE
+leituraUmSegundo[0] <= leituraUmSegundo[0].DB_MAX_OUTPUT_PORT_TYPE
+leituraUmSegundo[1] <= leituraUmSegundo[1].DB_MAX_OUTPUT_PORT_TYPE
+leituraUmSegundo[2] <= leituraUmSegundo[2].DB_MAX_OUTPUT_PORT_TYPE
+leituraUmSegundo[3] <= leituraUmSegundo[3].DB_MAX_OUTPUT_PORT_TYPE
+leituraUmSegundo[4] <= leituraUmSegundo[4].DB_MAX_OUTPUT_PORT_TYPE
+leituraUmSegundo[5] <= leituraUmSegundo[5].DB_MAX_OUTPUT_PORT_TYPE
+leituraUmSegundo[6] <= leituraUmSegundo[6].DB_MAX_OUTPUT_PORT_TYPE
+leituraUmSegundo[7] <= leituraUmSegundo[7].DB_MAX_OUTPUT_PORT_TYPE
 
 
 |Relogio|divisorGenerico_e_Interface:interfaceBaseTempo|divisorGenerico:baseTempo

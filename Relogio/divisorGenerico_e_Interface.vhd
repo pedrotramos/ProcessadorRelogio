@@ -7,7 +7,7 @@ ENTITY divisorGenerico_e_Interface IS
       clk              : IN std_logic;
       habilitaLeitura  : IN std_logic;
       limpaLeitura     : IN std_logic;
-      leituraUmSegundo : OUT std_logic
+      leituraUmSegundo : OUT std_logic_vector(7 DOWNTO 0)
    );
 END ENTITY;
 
@@ -32,6 +32,6 @@ BEGIN
          RST    => limpaLeitura
       );
    -- Faz o tristate de saida:
-   leituraUmSegundo <= sinalUmSegundo WHEN habilitaLeitura = '1' ELSE
-      'Z';
+   leituraUmSegundo <= "0000000" & sinalUmSegundo WHEN habilitaLeitura = '1' ELSE
+      (OTHERS => 'Z');
 END ARCHITECTURE interface;

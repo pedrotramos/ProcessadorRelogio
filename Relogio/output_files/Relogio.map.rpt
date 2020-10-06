@@ -1,5 +1,5 @@
 Analysis & Elaboration report for Relogio
-Sat Oct 03 10:06:23 2020
+Tue Oct 06 14:40:54 2020
 Quartus Prime Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition
 
 
@@ -23,20 +23,17 @@ Quartus Prime Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition
  15. Parameter Settings for User Entity Instance: processador:Processador|Unidade_Controle:UC
  16. Parameter Settings for User Entity Instance: decodificador:Decodificador
  17. Parameter Settings for User Entity Instance: interfaceCHAVES:entradaChaves
- 18. Parameter Settings for User Entity Instance: divisorGenerico_e_Interface:interfaceBaseTempo|divisorGenerico:baseTempo
- 19. Parameter Settings for User Entity Instance: divisorGenerico_e_Interface:interfaceBaseTempo|flipFlop:registra1Segundo
- 20. Parameter Settings for User Entity Instance: interfaceDISPLAYS:Displays
- 21. Analysis & Elaboration Settings
- 22. Port Connectivity Checks: "interfaceDISPLAYS:Displays"
- 23. Port Connectivity Checks: "divisorGenerico_e_Interface:interfaceBaseTempo|flipFlop:registra1Segundo"
- 24. Port Connectivity Checks: "divisorGenerico_e_Interface:interfaceBaseTempo"
- 25. Port Connectivity Checks: "interfaceCHAVES:entradaChaves"
- 26. Port Connectivity Checks: "decodificador:Decodificador"
- 27. Port Connectivity Checks: "processador:Processador|fluxoDados:FD|flipFlop:guardaFlagEq"
- 28. Port Connectivity Checks: "processador:Processador|fluxoDados:FD|registradorGenerico:PC"
- 29. Port Connectivity Checks: "processador:Processador|fluxoDados:FD"
- 30. Port Connectivity Checks: "processador:Processador"
- 31. Analysis & Elaboration Messages
+ 18. Parameter Settings for User Entity Instance: interfaceBOTOES:entradaBotoes
+ 19. Parameter Settings for User Entity Instance: divisorGenerico_e_Interface:interfaceBaseTempo|divisorGenerico:baseTempo
+ 20. Parameter Settings for User Entity Instance: divisorGenerico_e_Interface:interfaceBaseTempo|flipFlop:registra1Segundo
+ 21. Parameter Settings for User Entity Instance: interfaceDISPLAYS:Displays
+ 22. Analysis & Elaboration Settings
+ 23. Port Connectivity Checks: "interfaceDISPLAYS:Displays"
+ 24. Port Connectivity Checks: "divisorGenerico_e_Interface:interfaceBaseTempo|flipFlop:registra1Segundo"
+ 25. Port Connectivity Checks: "processador:Processador|fluxoDados:FD|flipFlop:guardaFlagEq"
+ 26. Port Connectivity Checks: "processador:Processador|fluxoDados:FD|registradorGenerico:PC"
+ 27. Port Connectivity Checks: "processador:Processador|fluxoDados:FD"
+ 28. Analysis & Elaboration Messages
 
 
 
@@ -63,7 +60,7 @@ https://fpgasoftware.intel.com/eula.
 +-----------------------------------------------------------------------------+
 ; Analysis & Elaboration Summary                                              ;
 +-------------------------------+---------------------------------------------+
-; Analysis & Elaboration Status ; Successful - Sat Oct 03 10:06:23 2020       ;
+; Analysis & Elaboration Status ; Successful - Tue Oct 06 14:40:54 2020       ;
 ; Quartus Prime Version         ; 20.1.0 Build 711 06/05/2020 SJ Lite Edition ;
 ; Revision Name                 ; Relogio                                     ;
 ; Top-level Entity Name         ; Relogio                                     ;
@@ -245,6 +242,16 @@ Note: In order to hide this table in the UI and the text report file, please set
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
++----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: interfaceBOTOES:entradaBotoes ;
++----------------+-------+---------------------------------------------------+
+; Parameter Name ; Value ; Type                                              ;
++----------------+-------+---------------------------------------------------+
+; datawidth      ; 8     ; Signed Integer                                    ;
++----------------+-------+---------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
 +-----------------------------------------------------------------------------------------------------------------------+
 ; Parameter Settings for User Entity Instance: divisorGenerico_e_Interface:interfaceBaseTempo|divisorGenerico:baseTempo ;
 +----------------+-------+----------------------------------------------------------------------------------------------+
@@ -388,33 +395,6 @@ Note: In order to hide this table in the UI and the text report file, please set
 +--------+-------+----------+--------------------------------------------------------------------------+
 
 
-+----------------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "divisorGenerico_e_Interface:interfaceBaseTempo"                                                 ;
-+------------------+--------+----------+-------------------------------------------------------------------------------------+
-; Port             ; Type   ; Severity ; Details                                                                             ;
-+------------------+--------+----------+-------------------------------------------------------------------------------------+
-; leituraumsegundo ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+------------------+--------+----------+-------------------------------------------------------------------------------------+
-
-
-+-----------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "interfaceCHAVES:entradaChaves"                                                       ;
-+-------+--------+----------+-------------------------------------------------------------------------------------+
-; Port  ; Type   ; Severity ; Details                                                                             ;
-+-------+--------+----------+-------------------------------------------------------------------------------------+
-; saida ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+-------+--------+----------+-------------------------------------------------------------------------------------+
-
-
-+-----------------------------------------------------------------------------------------------------------------------+
-; Port Connectivity Checks: "decodificador:Decodificador"                                                               ;
-+-------------+--------+----------+-------------------------------------------------------------------------------------+
-; Port        ; Type   ; Severity ; Details                                                                             ;
-+-------------+--------+----------+-------------------------------------------------------------------------------------+
-; habilitakey ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
-+-------------+--------+----------+-------------------------------------------------------------------------------------+
-
-
 +-----------------------------------------------------------------------------------------+
 ; Port Connectivity Checks: "processador:Processador|fluxoDados:FD|flipFlop:guardaFlagEq" ;
 +------+-------+----------+---------------------------------------------------------------+
@@ -443,22 +423,13 @@ Note: In order to hide this table in the UI and the text report file, please set
 +---------------+--------+----------+-------------------------------------------------------------------------------------+
 
 
-+-----------------------------------------------------+
-; Port Connectivity Checks: "processador:Processador" ;
-+--------+-------+----------+-------------------------+
-; Port   ; Type  ; Severity ; Details                 ;
-+--------+-------+----------+-------------------------+
-; datain ; Input ; Info     ; Stuck at GND            ;
-+--------+-------+----------+-------------------------+
-
-
 +---------------------------------+
 ; Analysis & Elaboration Messages ;
 +---------------------------------+
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Elaboration
     Info: Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition
-    Info: Processing started: Sat Oct 03 10:06:11 2020
+    Info: Processing started: Tue Oct 06 14:40:40 2020
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Relogio -c Relogio --analysis_and_elaboration
 Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
 Info (12021): Found 2 design units, including 1 entities, in source file muxgenerico2x1.vhd
@@ -474,7 +445,7 @@ Info (12021): Found 2 design units, including 1 entities, in source file memoria
     Info (12022): Found design unit 1: memoriaROM-assincrona File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/memoriaROM.vhd Line: 16
     Info (12023): Found entity 1: memoriaROM File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/memoriaROM.vhd Line: 5
 Info (12021): Found 2 design units, including 1 entities, in source file relogio.vhd
-    Info (12022): Found design unit 1: Relogio-arch_name File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/Relogio.vhd Line: 17
+    Info (12022): Found design unit 1: Relogio-arch_name File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/Relogio.vhd Line: 18
     Info (12023): Found entity 1: Relogio File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/Relogio.vhd Line: 5
 Info (12021): Found 2 design units, including 1 entities, in source file fluxodados.vhd
     Info (12022): Found design unit 1: fluxoDados-arch_name File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/fluxoDados.vhd Line: 25
@@ -512,11 +483,11 @@ Info (12021): Found 2 design units, including 1 entities, in source file divisor
 Info (12021): Found 2 design units, including 1 entities, in source file interfacedisplays.vhd
     Info (12022): Found design unit 1: interfaceDISPLAYS-arch_name File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/interfaceDISPLAYS.vhd Line: 17
     Info (12023): Found entity 1: interfaceDISPLAYS File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/interfaceDISPLAYS.vhd Line: 5
+Info (12021): Found 2 design units, including 1 entities, in source file interfacebotoes.vhd
+    Info (12022): Found design unit 1: interfaceBOTOES-comportamento File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/interfaceBOTOES.vhd Line: 15
+    Info (12023): Found entity 1: interfaceBOTOES File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/interfaceBOTOES.vhd Line: 4
 Info (12127): Elaborating entity "Relogio" for the top level hierarchy
-Warning (10036): Verilog HDL or VHDL warning at Relogio.vhd(19): object "leituraSw" assigned a value but never read File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/Relogio.vhd Line: 19
-Warning (10036): Verilog HDL or VHDL warning at Relogio.vhd(20): object "saidaBaseTempo" assigned a value but never read File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/Relogio.vhd Line: 20
-Warning (10036): Verilog HDL or VHDL warning at Relogio.vhd(29): object "habilitaKey" assigned a value but never read File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/Relogio.vhd Line: 29
-Info (12128): Elaborating entity "processador" for hierarchy "processador:Processador" File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/Relogio.vhd Line: 33
+Info (12128): Elaborating entity "processador" for hierarchy "processador:Processador" File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/Relogio.vhd Line: 34
 Info (12128): Elaborating entity "fluxoDados" for hierarchy "processador:Processador|fluxoDados:FD" File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/processador.vhd Line: 28
 Info (12128): Elaborating entity "registradorGenerico" for hierarchy "processador:Processador|fluxoDados:FD|registradorGenerico:PC" File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/fluxoDados.vhd Line: 51
 Info (12128): Elaborating entity "muxGenerico2x1" for hierarchy "processador:Processador|fluxoDados:FD|muxGenerico2x1:MuxProxPC" File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/fluxoDados.vhd Line: 63
@@ -527,16 +498,17 @@ Info (12128): Elaborating entity "ULA" for hierarchy "processador:Processador|fl
 Info (12128): Elaborating entity "flipFlop" for hierarchy "processador:Processador|fluxoDados:FD|flipFlop:guardaFlagEq" File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/fluxoDados.vhd Line: 119
 Info (12128): Elaborating entity "bancoRegistradoresArqRegMem" for hierarchy "processador:Processador|fluxoDados:FD|bancoRegistradoresArqRegMem:BancoRegistradores" File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/fluxoDados.vhd Line: 128
 Info (12128): Elaborating entity "Unidade_Controle" for hierarchy "processador:Processador|Unidade_Controle:UC" File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/processador.vhd Line: 38
-Info (12128): Elaborating entity "decodificador" for hierarchy "decodificador:Decodificador" File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/Relogio.vhd Line: 43
-Info (12128): Elaborating entity "interfaceCHAVES" for hierarchy "interfaceCHAVES:entradaChaves" File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/Relogio.vhd Line: 57
-Info (12128): Elaborating entity "divisorGenerico_e_Interface" for hierarchy "divisorGenerico_e_Interface:interfaceBaseTempo" File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/Relogio.vhd Line: 64
+Info (12128): Elaborating entity "decodificador" for hierarchy "decodificador:Decodificador" File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/Relogio.vhd Line: 44
+Info (12128): Elaborating entity "interfaceCHAVES" for hierarchy "interfaceCHAVES:entradaChaves" File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/Relogio.vhd Line: 56
+Info (12128): Elaborating entity "interfaceBOTOES" for hierarchy "interfaceBOTOES:entradaBotoes" File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/Relogio.vhd Line: 63
+Info (12128): Elaborating entity "divisorGenerico_e_Interface" for hierarchy "divisorGenerico_e_Interface:interfaceBaseTempo" File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/Relogio.vhd Line: 70
 Info (12128): Elaborating entity "divisorGenerico" for hierarchy "divisorGenerico_e_Interface:interfaceBaseTempo|divisorGenerico:baseTempo" File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/divisorGenerico_e_Interface.vhd Line: 19
-Info (12128): Elaborating entity "interfaceDISPLAYS" for hierarchy "interfaceDISPLAYS:Displays" File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/Relogio.vhd Line: 72
+Info (12128): Elaborating entity "interfaceDISPLAYS" for hierarchy "interfaceDISPLAYS:Displays" File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/Relogio.vhd Line: 78
 Info (12128): Elaborating entity "conversorHex7Seg" for hierarchy "interfaceDISPLAYS:Displays|conversorHex7Seg:DISPLAY0" File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/interfaceDISPLAYS.vhd Line: 20
-Info: Quartus Prime Analysis & Elaboration was successful. 0 errors, 3 warnings
+Info: Quartus Prime Analysis & Elaboration was successful. 0 errors, 0 warnings
     Info: Peak virtual memory: 4837 megabytes
-    Info: Processing ended: Sat Oct 03 10:06:23 2020
-    Info: Elapsed time: 00:00:12
-    Info: Total CPU time (on all processors): 00:00:22
+    Info: Processing ended: Tue Oct 06 14:40:54 2020
+    Info: Elapsed time: 00:00:14
+    Info: Total CPU time (on all processors): 00:00:27
 
 

@@ -34,7 +34,7 @@ ARCHITECTURE arch_name OF decodificador IS
 BEGIN
   habilitaSW(0) <= '1' WHEN (DataIN = x"00" AND load = '1') ELSE -- SW[0]: seleciona AM/PM ou 24h
   '0';
-  habilitaSW(1) <= '1' WHEN (DataIN = x"01" AND load = '1') ELSE -- SW[1]: sem funcionalidade
+  habilitaSW(1) <= '1' WHEN (DataIN = x"01" AND load = '1') ELSE -- SW[1]: 
   '0';
   habilitaSW(2) <= '1' WHEN (DataIN = x"02" AND load = '1') ELSE -- SW[2]: ativa configuracao para incrementos
   '0';

@@ -11,13 +11,14 @@ ENTITY Relogio IS
   PORT (
     -- Input ports
     CLOCK_50 : IN std_logic;
-    SW       : IN STD_LOGIC_VECTOR(7 DOWNTO 0)
+    SW       : IN std_logic_vector(7 DOWNTO 0);
+    KEY      : IN std_logic_vector(3 DOWNTO 0)
   );
 END ENTITY;
 ARCHITECTURE arch_name OF Relogio IS
 
   SIGNAL leituraSw, processador_decode : std_logic_vector(DATA_WIDTH - 1 DOWNTO 0);
-  SIGNAL saidaBaseTempo                : std_logic;
+  SIGNAL barramento_entradaProcessador : std_logic_vector(DATA_WIDTH - 1 DOWNTO 0);
 
   SIGNAL write_hex   : std_logic_vector(3 DOWNTO 0); -- displays so aceitam 4 bits
   SIGNAL load, store : std_logic;
@@ -33,7 +34,7 @@ BEGIN
   Processador : ENTITY work.processador
     PORT MAP(
       clk         => CLOCK_50,
-      dataIn      => "00000000", -- Adicionar leitura dos botoes e base de tempo e switches
+      dataIn      => barramento_entradaProcessador,
       dadoHex     => write_hex,
       load        => load,
       store       => store,
@@ -52,13 +53,18 @@ BEGIN
       clearBtempo    => clearBtempo
     );
 
-  -- tirar duvida como fazer uma chave por vez,
-  --pois temos um habilita pra cada
   entradaChaves : ENTITY work.interfaceCHAVES
     PORT MAP(
       entrada  => SW(DATA_WIDTH - 1 DOWNTO 0),
-      saida    => leituraSw,
+      saida    => barramento_entradaProcessador,
       habilita => habilitaSw
+    );
+
+  entradaBotoes : ENTITY work.interfaceBOTOES
+    PORT MAP(
+      entrada  => KEY(3 DOWNTO 0),
+      saida    => barramento_entradaProcessador,
+      habilita => habilitaKey
     );
 
   interfaceBaseTempo : ENTITY work.divisorGenerico_e_Interface
@@ -66,7 +72,7 @@ BEGIN
       clk              => CLOCK_50,
       habilitaLeitura  => habilitaBtempo,
       limpaLeitura     => clearBtempo,
-      leituraUmSegundo => saidaBaseTempo -- precisa expandir pra 8 bits pra entrar no dataIN do processador
+      leituraUmSegundo => barramento_entradaProcessador
     );
 
   Displays : ENTITY work.interfaceDISPLAYS
