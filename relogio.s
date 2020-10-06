@@ -1,4 +1,11 @@
 START:
+    # Seta os registradores do timer de hora, minuto e segundo com zero.
+	mov $0, %tsu
+	mov $0, %tsd
+	mov $0, %tmu
+	mov $0, %tmd
+	mov $0, %thu
+	mov $0, %thd
     # Seta os registradores de hora, minuto e segundo com zero.
 	mov $0, %su
 	mov $0, %sd
@@ -13,6 +20,20 @@ START:
     mov $10, %ampm # 10 = A, 15 = P
 
 MAIN:
+
+NEED_CONFIG:
+    # Pega SW[2] e passa seu valor para %config.
+    getio $2, %config
+    # Se SW[2] = 1, vai para a configuração do relógio
+    cmp $1, %config
+    je CONFIG
+
+CHECK_TIMER:
+    # Pega SW[1] e passa seu valor para %base.
+    getio $1, %temp
+    # Se SW[1] = 0, usa o modelo hh:mm:ss.
+    cmp $1, %temp
+    je TIMER
 
 SET_BASE:
     # Pega SW[0] e passa seu valor para %base.
@@ -33,7 +54,7 @@ DEFAULT:
 	display $17, %md
 	display $18, %hu
 	display $19, %hd
-    jmp NEED_CONFIG
+    jmp SECOND
 
 AMPM:
     # Caso contrário, passa os valores contidos nos registradores para o 
@@ -44,22 +65,18 @@ AMPM:
 	display $17, %md
 	display $18, %hu
 	display $19, %hd
-    jmp NEED_CONFIG
+    jmp SECOND
 
-NEED_CONFIG:
-    # Pega SW[2] e passa seu valor para %config.
-    getio $2, %config
-    # Se SW[2] = 1, vai para a configuração do relógio
-    cmp $1, %config
-    je CONFIG
-    #checa se passa 1 segundo
-    getio $X, %time
+SECOND:
+    # Checa se passa 1 segundo
+    getio $20, %time
     cmp $1, %time
     je SU
+    jmp MAIN
 
 SU:
-    #reset do time
-    mov $0, %time
+    # Reset do time
+    getio $21, %time
     # Checa se a unidade dos segundos vale 9.
     cmp $9, %su
     # Se verdadeiro pula para a checagem da casa das dezenas de segundo.
@@ -187,7 +204,7 @@ KEY3:
     getio $13, %key3
     cmp $0, %key3
     je SET_HD
-    jmp MAIN
+    jmp SET_BASE
 
 SET_HD:
     cmp $2, %hd
@@ -198,7 +215,7 @@ SET_HD2:
     cmp $1, %hd2
     je RST_HD2
     add $1, %hd2
-    jmp MAIN
+    jmp SET_BASE
 
 RST_HD:
     mov $0, %hd
@@ -212,11 +229,11 @@ RST_HD2:
 
 TURN_AM:
     mov $10, %ampm
-    jmp MAIN
+    jmp SET_BASE
 
 TURN_PM:
     mov $15, %ampm
-    jmp MAIN
+    jmp SET_BASE
 
 SET_HU:
     cmp $9, %hu
@@ -231,7 +248,7 @@ SET_HU2:
     cmp $2, %hu2
     je CHECK_END2
     add $1, %hu2
-    jmp MAIN
+    jmp SET_BASE
 
 CHECK_END:
     cmp $2, %hd
@@ -243,7 +260,7 @@ CHECK_END2:
     cmp $1, %hd2
     je RST_HU
     add $1, %hu2
-    jmp MAIN
+    jmp SET_BASE
 
 RST_HU:
     mov $0, %hu
@@ -251,24 +268,183 @@ RST_HU:
 
 RST_HU2:
     mov $1, %hu2
-    jmp MAIN
+    jmp SET_BASE
 
 SET_MD:
     cmp $5, %md
     je RST_MD
     add $1, %md
-    jmp MAIN
+    jmp SET_BASE
 
 RST_MD:
     mov $0, %md
-    jmp MAIN
+    jmp SET_BASE
 
 SET_MU:
     cmp $9, %mu
     je RST_MU
     add $1, %mu
-    jmp MAIN
+    jmp SET_BASE
 
 RST_MU:
     mov $0, %mu
-    jmp MAIN
+    jmp SET_BASE
+
+TIMER:
+CONFIG_TIMER:
+KEY0:
+    getio $10, %key0
+    cmp $0, %key0
+    je SET_S
+
+KEY1:
+    getio $11, %key1
+    cmp $0, %key1
+    je SET_M
+
+KEY2:
+    getio $12, %key2
+    cmp $0, %key2
+    je SET_H
+
+KEY3:
+    getio $13, %key3
+    cmp $0, %key3
+    je PLAY_TIMER
+    jmp DISPLAY_TIMER 
+
+SET_S:
+    cmp $9, %tsu
+    je INC_SD
+    add $1, %tsu
+    jmp DISPLAY_TIMER
+
+INC_SD:
+    mov $0, %tsu
+    cmp $5, %tsd
+    je RST_TS
+    add $1, %tsd
+    jmp DISPLAY_TIMER
+
+RST_TS:
+    mov $0, %tsd
+    jmp DISPLAY_TIMER
+
+SET_M:
+    cmp $9, %tmu
+    je INC_MD
+    add $1, %tmu
+    jmp DISPLAY_TIMER
+
+INC_MD:
+    mov $0, %tmu
+    cmp $5, %tmd
+    je RST_TM
+    add $1, %tmd
+    jmp DISPLAY_TIMER
+
+RST_TM:
+    mov $0, %tmd
+    jmp DISPLAY_TIMER
+
+SET_H:
+    cmp $9, %thu
+    je INC_HD
+    add $1, %thu
+    jmp DISPLAY_TIMER
+
+INC_HD:
+    mov $0, %thu
+    cmp $9, %thd
+    je RST_TH
+    add $1, %thd
+    jmp DISPLAY_TIMER
+
+RST_TH:
+    mov $0, %thd
+    jmp DISPLAY_CONFIG_TIMER
+
+DISPLAY_CONFIG_TIMER:
+    # Passa os valores contidos nos registradores para o 
+    # display hexadecimal de forma hh:mm:ss.
+	display $14, %tsu
+	display $15, %tsd
+	display $16, %tmu
+	display $17, %tmd
+	display $18, %thu
+	display $19, %thd
+    jmp SECOND
+
+PLAY_TIMER:
+SECOND:
+    # Checa se passa 1 segundo
+    getio $20, %time
+    cmp $1, %time
+    je TSU
+    jmp MAIN 
+
+TSU:
+    # Reset do time
+    getio $21, %time
+    # Checa se a unidade dos segundos vale 9.
+    cmp $0, %tsu
+    # Se verdadeiro pula para a checagem da casa das dezenas de segundo.
+    je TSD
+    # Caso contrário, incrementa a unidade de segundo e reinicia o loop 
+    # principal.
+    sub $1, %tsu
+    jmp SU
+
+TSD:
+    # Zera a unidade de segundo.
+    mov $9, %tsu
+    # Checa se a dezena dos segundos vale 5.
+    cmp $0, %tsd
+    # Se verdadeiro pula para a checagem da casa das unidades de minuto.
+    je TMU
+    # Caso contrário, incrementa a dezena de segundo e reinicia o loop 
+    # principal.
+    sub $1, %tsd
+    jmp SU
+
+TMU:
+    # Zera a dezena de segundo.
+    mov $5, %tsd
+    # Checa se a unidade dos minutos vale 9.
+    cmp $0, %tmu
+    # Se verdadeiro pula para a checagem da casa das dezenas de minuto.
+    je TMD
+    # Caso contrário, incrementa a unidade de minuto e reinicia o loop 
+    # principal.
+    sub $1, %tmu
+    jmp SU
+
+TMD:
+    # Zera a unidade de minuto.
+    mov $9, %tmu
+    # Checa se a dezena dos minutos vale 5.
+    cmp $0, %tmd
+    # Se verdadeiro pula para a checagem da casa das unidades de hora.
+    je THU
+    # Caso contrário, incrementa a dezena de minuto e reinicia o loop 
+    # principal.
+    sub $1, %tmd
+    jmp SU
+
+THU:
+    # Zera a dezena de minuto.
+    mov $5, %tmd
+    # Checa se a unidade das horas vale 9.
+    cmp $0, %thu
+    # Se verdadeiro pula para o incremento da casa das dezenas de hora.
+    je THD
+    # Caso contrário, incrementa a unidade de hora e reinicia o loop principal.
+    sub $1, %thu
+    jmp SU
+
+THD:
+    # Zera a unidade de hora.
+    mov $9, %thu
+    # Incrementa a unidade de hora e reinicia o loop principal.
+    sub $1, %thd
+    jmp SU
