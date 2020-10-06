@@ -6,8 +6,8 @@ ENTITY fluxoDados IS
     GENERIC (
         VALUE_WIDTH    : NATURAL := 8;
         ROM_ADDR_WIDTH : NATURAL := 10;
-        REG_ADDR_WIDTH : NATURAL := 4;
-        ROM_DATA_WIDTH : NATURAL := 17;
+        REG_ADDR_WIDTH : NATURAL := 5;
+        ROM_DATA_WIDTH : NATURAL := 18;
         OPCODE_WIDTH   : NATURAL := 3
     );
     PORT (
@@ -34,8 +34,8 @@ ARCHITECTURE arch_name OF fluxoDados IS
     SIGNAL saidaBancoReg          : std_logic_vector(VALUE_WIDTH - 1 DOWNTO 0);
     SIGNAL saidaULA_bancoReg      : std_logic_vector(VALUE_WIDTH - 1 DOWNTO 0);
 
-    ALIAS opCodeLocal  : std_logic_vector(OPCODE_WIDTH - 1 DOWNTO 0) IS Instrucao(16 DOWNTO 14);
-    ALIAS enderecoREG  : std_logic_vector(REG_ADDR_WIDTH - 1 DOWNTO 0) IS Instrucao(13 DOWNTO 10);
+    ALIAS opCodeLocal  : std_logic_vector(OPCODE_WIDTH - 1 DOWNTO 0) IS Instrucao(17 DOWNTO 15);
+    ALIAS enderecoREG  : std_logic_vector(REG_ADDR_WIDTH - 1 DOWNTO 0) IS Instrucao(14 DOWNTO 10);
     ALIAS enderecoJUMP : std_logic_vector(ROM_ADDR_WIDTH - 1 DOWNTO 0) IS Instrucao(9 DOWNTO 0);
     ALIAS imediato     : std_logic_vector(VALUE_WIDTH - 1 DOWNTO 0) IS Instrucao(7 DOWNTO 0);
 
@@ -126,7 +126,7 @@ BEGIN
         );
 
     BancoRegistradores : ENTITY work.bancoRegistradoresArqRegMem
-        GENERIC MAP(larguraDados => VALUE_WIDTH, larguraEndBancoRegs => 4)
+        GENERIC MAP(larguraDados => VALUE_WIDTH, larguraEndBancoRegs => REG_ADDR_WIDTH)
         PORT MAP(
             clk             => clk,
             endereco        => enderecoREG,

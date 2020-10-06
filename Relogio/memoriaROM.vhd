@@ -21,14 +21,14 @@ ARCHITECTURE assincrona OF memoriaROM IS
         RETURN blocoMemoria IS VARIABLE tmp : blocoMemoria := (OTHERS => (OTHERS => '0'));
     BEGIN
         -- Inicializa os endereços:
-        tmp(0) := b"00000000000000000";
-        tmp(1) := b"00000000000000000";
-        tmp(2) := b"00000000000000000";
-        tmp(3) := b"00000000000000000";
-        tmp(4) := b"00000000000000000";
-        tmp(5) := b"00000000000000000";
-        tmp(6) := b"00000000000000000";
-        tmp(7) := b"00000000000000000";
+        tmp(0) := b"000000000000000000";
+        tmp(1) := b"000000000000000000";
+        tmp(2) := b"000000000000000000";
+        tmp(3) := b"000000000000000000";
+        tmp(4) := b"000000000000000000";
+        tmp(5) := b"000000000000000000";
+        tmp(6) := b"000000000000000000";
+        tmp(7) := b"000000000000000000";
         RETURN tmp;
     END initMemory;
 
