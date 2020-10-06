@@ -13,6 +13,7 @@ START:
     mov $10, %ampm # 10 = A, 15 = P
 
 MAIN:
+
 SET_BASE:
     # Pega SW[0] e passa seu valor para %base.
     getio $0, %base
@@ -51,8 +52,14 @@ NEED_CONFIG:
     # Se SW[2] = 1, vai para a configuração do relógio
     cmp $1, %config
     je CONFIG
+    #checa se passa 1 segundo
+    getio $X, %time
+    cmp $1, %time
+    je SU
 
 SU:
+    #reset do time
+    mov $0, %time
     # Checa se a unidade dos segundos vale 9.
     cmp $9, %su
     # Se verdadeiro pula para a checagem da casa das dezenas de segundo.
