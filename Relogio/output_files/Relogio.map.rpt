@@ -1,5 +1,5 @@
 Analysis & Elaboration report for Relogio
-Sat Oct 10 19:25:26 2020
+Sat Oct 10 19:29:23 2020
 Quartus Prime Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition
 
 
@@ -9,8 +9,31 @@ Quartus Prime Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition
   1. Legal Notice
   2. Analysis & Elaboration Summary
   3. Parallel Compilation
-  4. Analysis & Elaboration Settings
-  5. Analysis & Elaboration Messages
+  4. Parameter Settings for User Entity Instance: Top-level Entity: |Relogio
+  5. Parameter Settings for User Entity Instance: processador:Processador
+  6. Parameter Settings for User Entity Instance: processador:Processador|fluxoDados:FD
+  7. Parameter Settings for User Entity Instance: processador:Processador|fluxoDados:FD|registradorGenerico:PC
+  8. Parameter Settings for User Entity Instance: processador:Processador|fluxoDados:FD|muxGenerico2x1:MuxProxPC
+  9. Parameter Settings for User Entity Instance: processador:Processador|fluxoDados:FD|somaConstante:somaUm
+ 10. Parameter Settings for User Entity Instance: processador:Processador|fluxoDados:FD|memoriaROM:ROM
+ 11. Parameter Settings for User Entity Instance: processador:Processador|fluxoDados:FD|muxGenerico2x1:muxIO_Imediato
+ 12. Parameter Settings for User Entity Instance: processador:Processador|fluxoDados:FD|ULA:ULA
+ 13. Parameter Settings for User Entity Instance: processador:Processador|fluxoDados:FD|flipFlop:guardaFlagEq
+ 14. Parameter Settings for User Entity Instance: processador:Processador|fluxoDados:FD|bancoRegistradoresArqRegMem:BancoRegistradores
+ 15. Parameter Settings for User Entity Instance: processador:Processador|Unidade_Controle:UC
+ 16. Parameter Settings for User Entity Instance: decodificador:Decodificador
+ 17. Parameter Settings for User Entity Instance: interfaceCHAVES:entradaChaves
+ 18. Parameter Settings for User Entity Instance: interfaceBOTOES:entradaBotoes
+ 19. Parameter Settings for User Entity Instance: divisorGenerico_e_Interface:interfaceBaseTempo|divisorGenerico:baseTempo
+ 20. Parameter Settings for User Entity Instance: divisorGenerico_e_Interface:interfaceBaseTempo|flipFlop:registra1Segundo
+ 21. Parameter Settings for User Entity Instance: interfaceDISPLAYS:Displays
+ 22. Analysis & Elaboration Settings
+ 23. Port Connectivity Checks: "interfaceDISPLAYS:Displays"
+ 24. Port Connectivity Checks: "divisorGenerico_e_Interface:interfaceBaseTempo|flipFlop:registra1Segundo"
+ 25. Port Connectivity Checks: "processador:Processador|fluxoDados:FD|flipFlop:guardaFlagEq"
+ 26. Port Connectivity Checks: "processador:Processador|fluxoDados:FD|registradorGenerico:PC"
+ 27. Port Connectivity Checks: "processador:Processador|fluxoDados:FD"
+ 28. Analysis & Elaboration Messages
 
 
 
@@ -37,7 +60,7 @@ https://fpgasoftware.intel.com/eula.
 +-----------------------------------------------------------------------------+
 ; Analysis & Elaboration Summary                                              ;
 +-------------------------------+---------------------------------------------+
-; Analysis & Elaboration Status ; Failed - Sat Oct 10 19:25:26 2020           ;
+; Analysis & Elaboration Status ; Successful - Sat Oct 10 19:29:23 2020       ;
 ; Quartus Prime Version         ; 20.1.0 Build 711 06/05/2020 SJ Lite Edition ;
 ; Revision Name                 ; Relogio                                     ;
 ; Top-level Entity Name         ; Relogio                                     ;
@@ -66,6 +89,197 @@ https://fpgasoftware.intel.com/eula.
 ; Usage by Processor         ; % Time Used ;
 ;     Processor 1            ; 100.0%      ;
 +----------------------------+-------------+
+
+
++-------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: Top-level Entity: |Relogio ;
++----------------+-------+------------------------------------------------+
+; Parameter Name ; Value ; Type                                           ;
++----------------+-------+------------------------------------------------+
+; DATA_WIDTH     ; 8     ; Signed Integer                                 ;
+; ADDR_WIDTH     ; 8     ; Signed Integer                                 ;
++----------------+-------+------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: processador:Processador ;
++----------------+-------+---------------------------------------------+
+; Parameter Name ; Value ; Type                                        ;
++----------------+-------+---------------------------------------------+
+; data_width     ; 8     ; Signed Integer                              ;
+; addr_width     ; 12    ; Signed Integer                              ;
++----------------+-------+---------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: processador:Processador|fluxoDados:FD ;
++----------------+-------+-----------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                      ;
++----------------+-------+-----------------------------------------------------------+
+; value_width    ; 8     ; Signed Integer                                            ;
+; rom_addr_width ; 10    ; Signed Integer                                            ;
+; reg_addr_width ; 5     ; Signed Integer                                            ;
+; rom_data_width ; 18    ; Signed Integer                                            ;
+; opcode_width   ; 3     ; Signed Integer                                            ;
++----------------+-------+-----------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: processador:Processador|fluxoDados:FD|registradorGenerico:PC ;
++----------------+-------+----------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                             ;
++----------------+-------+----------------------------------------------------------------------------------+
+; larguradados   ; 10    ; Signed Integer                                                                   ;
++----------------+-------+----------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: processador:Processador|fluxoDados:FD|muxGenerico2x1:MuxProxPC ;
++----------------+-------+------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                               ;
++----------------+-------+------------------------------------------------------------------------------------+
+; larguradados   ; 10    ; Signed Integer                                                                     ;
++----------------+-------+------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: processador:Processador|fluxoDados:FD|somaConstante:somaUm ;
++----------------+-------+--------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                           ;
++----------------+-------+--------------------------------------------------------------------------------+
+; larguradados   ; 10    ; Signed Integer                                                                 ;
+; constante      ; 1     ; Signed Integer                                                                 ;
++----------------+-------+--------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++---------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: processador:Processador|fluxoDados:FD|memoriaROM:ROM ;
++----------------+-------+--------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                     ;
++----------------+-------+--------------------------------------------------------------------------+
+; datawidth      ; 18    ; Signed Integer                                                           ;
+; addrwidth      ; 10    ; Signed Integer                                                           ;
++----------------+-------+--------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: processador:Processador|fluxoDados:FD|muxGenerico2x1:muxIO_Imediato ;
++----------------+-------+-----------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                    ;
++----------------+-------+-----------------------------------------------------------------------------------------+
+; larguradados   ; 8     ; Signed Integer                                                                          ;
++----------------+-------+-----------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: processador:Processador|fluxoDados:FD|ULA:ULA ;
++----------------+-------+-------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                              ;
++----------------+-------+-------------------------------------------------------------------+
+; larguradados   ; 8     ; Signed Integer                                                    ;
++----------------+-------+-------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: processador:Processador|fluxoDados:FD|flipFlop:guardaFlagEq ;
++----------------+-------+---------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                            ;
++----------------+-------+---------------------------------------------------------------------------------+
+; larguradados   ; 8     ; Signed Integer                                                                  ;
++----------------+-------+---------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: processador:Processador|fluxoDados:FD|bancoRegistradoresArqRegMem:BancoRegistradores ;
++---------------------+-------+-----------------------------------------------------------------------------------------------------+
+; Parameter Name      ; Value ; Type                                                                                                ;
++---------------------+-------+-----------------------------------------------------------------------------------------------------+
+; larguradados        ; 8     ; Signed Integer                                                                                      ;
+; larguraendbancoregs ; 5     ; Signed Integer                                                                                      ;
++---------------------+-------+-----------------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: processador:Processador|Unidade_Controle:UC ;
++----------------+-------+-----------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                            ;
++----------------+-------+-----------------------------------------------------------------+
+; data_width     ; 8     ; Signed Integer                                                  ;
+; addr_width     ; 8     ; Signed Integer                                                  ;
++----------------+-------+-----------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++--------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: decodificador:Decodificador ;
++----------------+-------+-------------------------------------------------+
+; Parameter Name ; Value ; Type                                            ;
++----------------+-------+-------------------------------------------------+
+; data_width     ; 8     ; Signed Integer                                  ;
+; addr_width     ; 8     ; Signed Integer                                  ;
++----------------+-------+-------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: interfaceCHAVES:entradaChaves ;
++----------------+-------+---------------------------------------------------+
+; Parameter Name ; Value ; Type                                              ;
++----------------+-------+---------------------------------------------------+
+; datawidth      ; 8     ; Signed Integer                                    ;
++----------------+-------+---------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++----------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: interfaceBOTOES:entradaBotoes ;
++----------------+-------+---------------------------------------------------+
+; Parameter Name ; Value ; Type                                              ;
++----------------+-------+---------------------------------------------------+
+; datawidth      ; 8     ; Signed Integer                                    ;
++----------------+-------+---------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: divisorGenerico_e_Interface:interfaceBaseTempo|divisorGenerico:baseTempo ;
++----------------+-------+----------------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                         ;
++----------------+-------+----------------------------------------------------------------------------------------------+
+; divisor        ; 5     ; Signed Integer                                                                               ;
++----------------+-------+----------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-----------------------------------------------------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: divisorGenerico_e_Interface:interfaceBaseTempo|flipFlop:registra1Segundo ;
++----------------+-------+----------------------------------------------------------------------------------------------+
+; Parameter Name ; Value ; Type                                                                                         ;
++----------------+-------+----------------------------------------------------------------------------------------------+
+; larguradados   ; 8     ; Signed Integer                                                                               ;
++----------------+-------+----------------------------------------------------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
+
+
++-------------------------------------------------------------------------+
+; Parameter Settings for User Entity Instance: interfaceDISPLAYS:Displays ;
++----------------+-------+------------------------------------------------+
+; Parameter Name ; Value ; Type                                           ;
++----------------+-------+------------------------------------------------+
+; data_width     ; 4     ; Signed Integer                                 ;
++----------------+-------+------------------------------------------------+
+Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
 +---------------------------------------------------------------------------------------------------------------------------+
@@ -157,13 +371,65 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------------------------------------------+--------------------+--------------------+
 
 
++----------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "interfaceDISPLAYS:Displays"                                                         ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; Port ; Type   ; Severity ; Details                                                                             ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+; hex0 ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; hex1 ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; hex2 ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; hex3 ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; hex4 ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
+; hex5 ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++------+--------+----------+-------------------------------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "divisorGenerico_e_Interface:interfaceBaseTempo|flipFlop:registra1Segundo" ;
++--------+-------+----------+--------------------------------------------------------------------------+
+; Port   ; Type  ; Severity ; Details                                                                  ;
++--------+-------+----------+--------------------------------------------------------------------------+
+; din    ; Input ; Info     ; Stuck at VCC                                                             ;
+; enable ; Input ; Info     ; Stuck at VCC                                                             ;
++--------+-------+----------+--------------------------------------------------------------------------+
+
+
++-----------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "processador:Processador|fluxoDados:FD|flipFlop:guardaFlagEq" ;
++------+-------+----------+---------------------------------------------------------------+
+; Port ; Type  ; Severity ; Details                                                       ;
++------+-------+----------+---------------------------------------------------------------+
+; rst  ; Input ; Info     ; Stuck at GND                                                  ;
++------+-------+----------+---------------------------------------------------------------+
+
+
++------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "processador:Processador|fluxoDados:FD|registradorGenerico:PC" ;
++--------+-------+----------+--------------------------------------------------------------+
+; Port   ; Type  ; Severity ; Details                                                      ;
++--------+-------+----------+--------------------------------------------------------------+
+; enable ; Input ; Info     ; Stuck at VCC                                                 ;
+; rst    ; Input ; Info     ; Stuck at GND                                                 ;
++--------+-------+----------+--------------------------------------------------------------+
+
+
++-------------------------------------------------------------------------------------------------------------------------+
+; Port Connectivity Checks: "processador:Processador|fluxoDados:FD"                                                       ;
++---------------+--------+----------+-------------------------------------------------------------------------------------+
+; Port          ; Type   ; Severity ; Details                                                                             ;
++---------------+--------+----------+-------------------------------------------------------------------------------------+
+; dataout[7..4] ; Output ; Info     ; Connected to dangling logic. Logic that only feeds a dangling port will be removed. ;
++---------------+--------+----------+-------------------------------------------------------------------------------------+
+
+
 +---------------------------------+
 ; Analysis & Elaboration Messages ;
 +---------------------------------+
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Elaboration
     Info: Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition
-    Info: Processing started: Sat Oct 10 19:25:07 2020
+    Info: Processing started: Sat Oct 10 19:29:04 2020
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Relogio -c Relogio --analysis_and_elaboration
 Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
 Info (12021): Found 2 design units, including 1 entities, in source file muxgenerico2x1.vhd
@@ -175,26 +441,9 @@ Info (12021): Found 2 design units, including 1 entities, in source file registr
 Info (12021): Found 2 design units, including 1 entities, in source file somaconstante.vhd
     Info (12022): Found design unit 1: somaConstante-comportamento File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/somaConstante.vhd Line: 17
     Info (12023): Found entity 1: somaConstante File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/somaConstante.vhd Line: 6
-Error (10500): VHDL syntax error at memoriaROM.vhd(24) near text ":";  expecting "(", or "'", or "." File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/memoriaROM.vhd Line: 24
-Error (10500): VHDL syntax error at memoriaROM.vhd(25) near text ":";  expecting "(", or "'", or "." File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/memoriaROM.vhd Line: 25
-Error (10500): VHDL syntax error at memoriaROM.vhd(26) near text ":";  expecting "(", or "'", or "." File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/memoriaROM.vhd Line: 26
-Error (10500): VHDL syntax error at memoriaROM.vhd(27) near text ":";  expecting "(", or "'", or "." File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/memoriaROM.vhd Line: 27
-Error (10500): VHDL syntax error at memoriaROM.vhd(28) near text ":";  expecting "(", or "'", or "." File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/memoriaROM.vhd Line: 28
-Error (10500): VHDL syntax error at memoriaROM.vhd(29) near text ":";  expecting "(", or "'", or "." File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/memoriaROM.vhd Line: 29
-Error (10500): VHDL syntax error at memoriaROM.vhd(30) near text ":";  expecting "(", or "'", or "." File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/memoriaROM.vhd Line: 30
-Error (10500): VHDL syntax error at memoriaROM.vhd(31) near text ":";  expecting "(", or "'", or "." File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/memoriaROM.vhd Line: 31
-Error (10500): VHDL syntax error at memoriaROM.vhd(32) near text ":";  expecting "(", or "'", or "." File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/memoriaROM.vhd Line: 32
-Error (10500): VHDL syntax error at memoriaROM.vhd(33) near text ":";  expecting "(", or "'", or "." File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/memoriaROM.vhd Line: 33
-Error (10500): VHDL syntax error at memoriaROM.vhd(34) near text ":";  expecting "(", or "'", or "." File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/memoriaROM.vhd Line: 34
-Error (10500): VHDL syntax error at memoriaROM.vhd(35) near text ":";  expecting "(", or "'", or "." File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/memoriaROM.vhd Line: 35
-Error (10500): VHDL syntax error at memoriaROM.vhd(36) near text ":";  expecting "(", or "'", or "." File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/memoriaROM.vhd Line: 36
-Error (10500): VHDL syntax error at memoriaROM.vhd(37) near text ":";  expecting "(", or "'", or "." File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/memoriaROM.vhd Line: 37
-Error (10500): VHDL syntax error at memoriaROM.vhd(38) near text ":";  expecting "(", or "'", or "." File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/memoriaROM.vhd Line: 38
-Error (10500): VHDL syntax error at memoriaROM.vhd(39) near text ":";  expecting "(", or "'", or "." File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/memoriaROM.vhd Line: 39
-Error (10500): VHDL syntax error at memoriaROM.vhd(40) near text ":";  expecting "(", or "'", or "." File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/memoriaROM.vhd Line: 40
-Error (10500): VHDL syntax error at memoriaROM.vhd(41) near text ":";  expecting "(", or "'", or "." File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/memoriaROM.vhd Line: 41
-Error (10500): VHDL syntax error at memoriaROM.vhd(42) near text ":";  expecting "(", or "'", or "." File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/memoriaROM.vhd Line: 42
-Info (12021): Found 0 design units, including 0 entities, in source file memoriarom.vhd
+Info (12021): Found 2 design units, including 1 entities, in source file memoriarom.vhd
+    Info (12022): Found design unit 1: memoriaROM-assincrona File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/memoriaROM.vhd Line: 17
+    Info (12023): Found entity 1: memoriaROM File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/memoriaROM.vhd Line: 6
 Info (12021): Found 2 design units, including 1 entities, in source file relogio.vhd
     Info (12022): Found design unit 1: Relogio-arch_name File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/Relogio.vhd Line: 18
     Info (12023): Found entity 1: Relogio File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/Relogio.vhd Line: 5
@@ -237,10 +486,29 @@ Info (12021): Found 2 design units, including 1 entities, in source file interfa
 Info (12021): Found 2 design units, including 1 entities, in source file interfacebotoes.vhd
     Info (12022): Found design unit 1: interfaceBOTOES-comportamento File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/interfaceBOTOES.vhd Line: 15
     Info (12023): Found entity 1: interfaceBOTOES File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/interfaceBOTOES.vhd Line: 4
-Error: Quartus Prime Analysis & Elaboration was unsuccessful. 19 errors, 0 warnings
-    Error: Peak virtual memory: 4826 megabytes
-    Error: Processing ended: Sat Oct 10 19:25:26 2020
-    Error: Elapsed time: 00:00:19
-    Error: Total CPU time (on all processors): 00:00:24
+Info (12127): Elaborating entity "Relogio" for the top level hierarchy
+Info (12128): Elaborating entity "processador" for hierarchy "processador:Processador" File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/Relogio.vhd Line: 34
+Info (12128): Elaborating entity "fluxoDados" for hierarchy "processador:Processador|fluxoDados:FD" File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/processador.vhd Line: 28
+Info (12128): Elaborating entity "registradorGenerico" for hierarchy "processador:Processador|fluxoDados:FD|registradorGenerico:PC" File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/fluxoDados.vhd Line: 51
+Info (12128): Elaborating entity "muxGenerico2x1" for hierarchy "processador:Processador|fluxoDados:FD|muxGenerico2x1:MuxProxPC" File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/fluxoDados.vhd Line: 63
+Info (12128): Elaborating entity "somaConstante" for hierarchy "processador:Processador|fluxoDados:FD|somaConstante:somaUm" File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/fluxoDados.vhd Line: 76
+Info (12128): Elaborating entity "memoriaROM" for hierarchy "processador:Processador|fluxoDados:FD|memoriaROM:ROM" File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/fluxoDados.vhd Line: 86
+Info (12128): Elaborating entity "muxGenerico2x1" for hierarchy "processador:Processador|fluxoDados:FD|muxGenerico2x1:muxIO_Imediato" File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/fluxoDados.vhd Line: 96
+Info (12128): Elaborating entity "ULA" for hierarchy "processador:Processador|fluxoDados:FD|ULA:ULA" File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/fluxoDados.vhd Line: 107
+Info (12128): Elaborating entity "flipFlop" for hierarchy "processador:Processador|fluxoDados:FD|flipFlop:guardaFlagEq" File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/fluxoDados.vhd Line: 119
+Info (12128): Elaborating entity "bancoRegistradoresArqRegMem" for hierarchy "processador:Processador|fluxoDados:FD|bancoRegistradoresArqRegMem:BancoRegistradores" File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/fluxoDados.vhd Line: 128
+Info (12128): Elaborating entity "Unidade_Controle" for hierarchy "processador:Processador|Unidade_Controle:UC" File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/processador.vhd Line: 38
+Info (12128): Elaborating entity "decodificador" for hierarchy "decodificador:Decodificador" File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/Relogio.vhd Line: 44
+Info (12128): Elaborating entity "interfaceCHAVES" for hierarchy "interfaceCHAVES:entradaChaves" File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/Relogio.vhd Line: 56
+Info (12128): Elaborating entity "interfaceBOTOES" for hierarchy "interfaceBOTOES:entradaBotoes" File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/Relogio.vhd Line: 63
+Info (12128): Elaborating entity "divisorGenerico_e_Interface" for hierarchy "divisorGenerico_e_Interface:interfaceBaseTempo" File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/Relogio.vhd Line: 70
+Info (12128): Elaborating entity "divisorGenerico" for hierarchy "divisorGenerico_e_Interface:interfaceBaseTempo|divisorGenerico:baseTempo" File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/divisorGenerico_e_Interface.vhd Line: 19
+Info (12128): Elaborating entity "interfaceDISPLAYS" for hierarchy "interfaceDISPLAYS:Displays" File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/Relogio.vhd Line: 78
+Info (12128): Elaborating entity "conversorHex7Seg" for hierarchy "interfaceDISPLAYS:Displays|conversorHex7Seg:DISPLAY0" File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/interfaceDISPLAYS.vhd Line: 20
+Info: Quartus Prime Analysis & Elaboration was successful. 0 errors, 0 warnings
+    Info: Peak virtual memory: 4829 megabytes
+    Info: Processing ended: Sat Oct 10 19:29:23 2020
+    Info: Elapsed time: 00:00:19
+    Info: Total CPU time (on all processors): 00:00:32
 
 
