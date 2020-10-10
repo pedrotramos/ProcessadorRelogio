@@ -230,16 +230,13 @@ class MIPS_Assemble:
     def assemble(self):
         logging.debug("assemble")
         self.out_format.begin()
-        n = 0
         self.read_stream.seek(0, 0)
         self.line_asm.reset_address()
         for i, l in enumerate(self.read_stream):
-            n += 1
             self.line_asm.set_line(l)
             outp = self.line_asm.get_instruction()
             if outp != "":
                 self.out_format.write(outp)
-        print("N = ", n)
         self.out_format.end()
 
     def set_save_file(self, file_stream):
