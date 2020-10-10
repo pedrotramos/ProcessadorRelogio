@@ -166,7 +166,7 @@ HU2:
 
 HD2:
     mov $0, %hu2
-    add $1, hd%
+    add $1, %hd
 
 HU_P2:
     # Checa se a unidade das horas vale 9.
@@ -362,9 +362,9 @@ INC_HD:
 
 RST_TH:
     mov $0, %thd
-    jmp DISPLAY_CONFIG_TIMER
+    jmp DISPLAY_TIMER
 
-DISPLAY_CONFIG_TIMER:
+DISPLAY_TIMER:
     # Passa os valores contidos nos registradores para o 
     # display hexadecimal de forma hh:mm:ss.
 	display $14, %tsu

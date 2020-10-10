@@ -73,7 +73,9 @@ class Line_Assemble:
                 + self.get_immediate(args[0])
             )
         elif self.get_instruction_type() == "j":
-            output = self.get_j_instruction(instruct) + self.get_j_address(args[0])
+            output = (
+                self.get_j_instruction(instruct) + "00000" + self.get_j_address(args[0])
+            )
         elif self.get_instruction_type() == "d":
             output = (
                 self.get_d_instruction(instruct)
@@ -89,19 +91,19 @@ class Line_Assemble:
 
     def get_i_instruction(self, instruct):
         table = {"cmp": "0", "add": "2", "sub": "3", "getio": "4", "mov": "7"}
-        r = bindigits(int(table[instruct], 16), 4)
+        r = bindigits(int(table[instruct], 16), 3)
         logging.debug("i instruct: {}".format(r))
         return r
 
     def get_j_instruction(self, instruct):
         table = {"jmp": "1", "je": "6"}
-        r = bindigits(int(table[instruct], 16), 4)
+        r = bindigits(int(table[instruct], 16), 3)
         logging.debug("j instruct: {}".format(r))
         return r
 
     def get_d_instruction(self, instruct):
         table = {"display": "5"}
-        r = bindigits(int(table[instruct], 16), 4)
+        r = bindigits(int(table[instruct], 16), 3)
         logging.debug("j instruct: {}".format(r))
         return r
 
@@ -141,7 +143,7 @@ class Line_Assemble:
             "%key3": "24",
         }
 
-        r = bindigits(int(table[register], 16), 4)
+        r = bindigits(int(table[register], 16), 5)
         logging.debug("register: {}".format(r))
         return r
 
@@ -149,13 +151,13 @@ class Line_Assemble:
         if "(" in immediate:
             immediate = immediate[0 : immediate.find("(")]
         immediate = immediate.replace("$", "")
-        r = bindigits(int(immediate), 4)
+        r = bindigits(int(immediate), 10)
         logging.debug("immediate: {}".format(r))
         return r
 
     def get_j_address(self, label):
         a = self.labels[label]
-        r = bindigits(int(a), 8)
+        r = bindigits(int(a), 10)
         logging.debug("j address: {}".format(r))
         return r
 
@@ -185,7 +187,7 @@ class MIPS_String_Format:
 
 
 class MIPS_MIF_Format:
-    def __init__(self, addr=8, data_width=12, increment_by=1):
+    def __init__(self, addr=10, data_width=18, increment_by=1):
         self.addr = addr
         self.data_width = data_width
         self.current_addr = 0
@@ -228,13 +230,16 @@ class MIPS_Assemble:
     def assemble(self):
         logging.debug("assemble")
         self.out_format.begin()
+        n = 0
         self.read_stream.seek(0, 0)
         self.line_asm.reset_address()
         for i, l in enumerate(self.read_stream):
+            n += 1
             self.line_asm.set_line(l)
             outp = self.line_asm.get_instruction()
             if outp != "":
                 self.out_format.write(outp)
+        print("N = ", n)
         self.out_format.end()
 
     def set_save_file(self, file_stream):
@@ -257,11 +262,9 @@ if __name__ == "__main__":
     argparse.add_argument("-mif", "--mif-format", default=False, action="store_true")
     argparse.add_argument("-a", "--addr", type=int, default=6)
     argparse.add_argument("-i", "--increment-by", type=int, default=1)
-
     args = argparse.parse_args()
     if args.debug:
         logging.basicConfig(level=logging.DEBUG)
-
     out_format = MIPS_String_Format()
     if args.mif_format:
         out_format = MIPS_MIF_Format(addr=args.addr, increment_by=args.increment_by)
