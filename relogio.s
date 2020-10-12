@@ -63,8 +63,8 @@ AMPM:
 	display $15, %empty
 	display $16, %mu
 	display $17, %md
-	display $18, %hu
-	display $19, %hd
+	display $18, %hu2
+	display $19, %hd2
     jmp SECOND
 
 SECOND:
