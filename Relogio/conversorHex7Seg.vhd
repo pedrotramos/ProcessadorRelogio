@@ -27,20 +27,20 @@ ARCHITECTURE comportamento OF conversorHex7Seg IS
     --
     SIGNAL rascSaida7seg : std_logic_vector(6 DOWNTO 0);
 BEGIN
-    rascSaida7seg <= "1000000" WHEN dadoHex = x"0" ELSE ---0
-        "1111001" WHEN dadoHex = x"1" ELSE                  ---1
-        "0100100" WHEN dadoHex = x"2" ELSE                  ---2
-        "0110000" WHEN dadoHex = x"3" ELSE                  ---3
-        "0011001" WHEN dadoHex = x"4" ELSE                  ---4
-        "0010010" WHEN dadoHex = x"5" ELSE                  ---5
-        "0000010" WHEN dadoHex = x"6" ELSE                  ---6
-        "1111000" WHEN dadoHex = x"7" ELSE                  ---7
-        "0000000" WHEN dadoHex = x"8" ELSE                  ---8
-        "0010000" WHEN dadoHex = x"9" ELSE                  ---9
-        "0001000" WHEN dadoHex = x"A" ELSE                  ---A
-        "1111111" WHEN dadoHex = x"C" ELSE                  --- 12 vazio
-        "0001100" WHEN dadoHex = x"F" ELSE                  --- 15 P
-        "1111111";                                          -- Apaga todos segmentos.
+    rascSaida7seg <= "1000000" WHEN dadoHex = x"0" ELSE                  ---0
+						   "1111001" WHEN dadoHex = x"1" ELSE                  ---1
+						   "0100100" WHEN dadoHex = x"2" ELSE                  ---2
+						   "0110000" WHEN dadoHex = x"3" ELSE                  ---3
+						   "0011001" WHEN dadoHex = x"4" ELSE                  ---4
+						   "0010010" WHEN dadoHex = x"5" ELSE                  ---5
+						   "0000010" WHEN dadoHex = x"6" ELSE                  ---6
+						   "1111000" WHEN dadoHex = x"7" ELSE                  ---7
+						   "0000000" WHEN dadoHex = x"8" ELSE                  ---8
+						   "0010000" WHEN dadoHex = x"9" ELSE                  ---9
+						   "0001000" WHEN dadoHex = x"a" ELSE                  ---A
+						   "1111111" WHEN dadoHex = x"c" ELSE                  --- 12 vazio
+						   "0001100" WHEN dadoHex = x"f" ELSE                  --- 15 P
+						   "1111111";                                          -- Apaga todos segmentos.
 
     PROCESS (clk)
     BEGIN

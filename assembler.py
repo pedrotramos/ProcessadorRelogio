@@ -4,6 +4,8 @@
 import logging
 import argparse
 import sys
+import io
+import rom
 
 
 def bindigits(n, bits):
@@ -112,38 +114,38 @@ class Line_Assemble:
         if "(" in register:
             register = register[register.find("(") : register.find(")")]
 
-        if "$" in register:
-            register = register[register.find("$") + 1 :]
+        if "%" in register:
+            register = register[register.find("%") + 1 :]
 
         table = {
-            "%su": "0",
-            "%sd": "1",
-            "%mu": "2",
-            "%md": "3",
-            "%hu": "4",
-            "%hd": "5",
-            "%hu2": "6",
-            "%hd2": "7",
-            "%empty": "8",
-            "%ampm": "9",
-            "%base": "10",
-            "%config": "11",
-            "%temp": "12",
-            "%clear": "13",
-            "%time": "14",
-            "%tsu": "15",
-            "%tsd": "16",
-            "%tmu": "17",
-            "%tmd": "18",
-            "%thu": "19",
-            "%thd": "20",
-            "%key0": "21",
-            "%key1": "22",
-            "%key2": "23",
-            "%key3": "24",
+            "su": "0",
+            "sd": "1",
+            "mu": "2",
+            "md": "3",
+            "hu": "4",
+            "hd": "5",
+            "hu2": "6",
+            "hd2": "7",
+            "empty": "8",
+            "ampm": "9",
+            "base": "10",
+            "config": "11",
+            "temp": "12",
+            "clear": "13",
+            "time": "14",
+            "tsu": "15",
+            "tsd": "16",
+            "tmu": "17",
+            "tmd": "18",
+            "thu": "19",
+            "thd": "20",
+            "key0": "21",
+            "key1": "22",
+            "key2": "23",
+            "key3": "24",
         }
 
-        r = bindigits(int(table[register], 16), 5)
+        r = bindigits(int(table[register], 10), 5)
         logging.debug("register: {}".format(r))
         return r
 
