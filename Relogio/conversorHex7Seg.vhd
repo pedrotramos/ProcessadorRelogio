@@ -38,7 +38,7 @@ BEGIN
         "0000000" WHEN dadoHex = x"8" ELSE                  ---8
         "0010000" WHEN dadoHex = x"9" ELSE                  ---9
         "0001000" WHEN dadoHex = x"A" ELSE                  ---A
-        "1111111" WHEN dadoHex = x"B" ELSE                  --- 11 vazio
+        "1111111" WHEN dadoHex = x"C" ELSE                  --- 12 vazio
         "0001100" WHEN dadoHex = x"F" ELSE                  --- 15 P
         "1111111";                                          -- Apaga todos segmentos.
 

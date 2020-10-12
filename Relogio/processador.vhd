@@ -12,7 +12,7 @@ ENTITY processador IS
         clk    : IN std_logic;
         dataIn : IN std_logic_vector(DATA_WIDTH - 1 DOWNTO 0);
         -- Output ports
-        dadoHex     : OUT std_logic_vector(3 DOWNTO 0);
+        dadoDsp     : OUT std_logic_vector(3 DOWNTO 0);
         load        : OUT std_logic;
         store       : OUT std_logic;
         outToDecode : OUT std_logic_vector(DATA_WIDTH - 1 DOWNTO 0)
@@ -44,6 +44,6 @@ BEGIN
 
     load        <= palavraControle(1);
     store       <= palavraControle(0);
-    dadoHex     <= saidaBancoReg(3 DOWNTO 0);
+    dadoDsp     <= saidaBancoReg(3 DOWNTO 0);
     outToDecode <= toDecode;
 END ARCHITECTURE;

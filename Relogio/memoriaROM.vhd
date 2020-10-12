@@ -5,7 +5,7 @@ USE ieee.numeric_std.ALL;
 
 ENTITY memoriaROM IS
     GENERIC (
-        dataWidth : NATURAL := 17;
+        dataWidth : NATURAL := 18;
         addrWidth : NATURAL := 10
     );
     PORT (

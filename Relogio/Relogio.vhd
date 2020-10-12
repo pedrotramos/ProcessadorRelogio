@@ -36,7 +36,7 @@ BEGIN
     PORT MAP(
       clk         => CLOCK_50,
       dataIn      => barramento_entradaProcessador,
-      dadoHex     => write_hex,
+      dadoDsp     => write_hex,
       load        => load,
       store       => store,
       outToDecode => processador_decode
@@ -86,6 +86,6 @@ BEGIN
 		H2     => HEX2, 
 		H3     => HEX3,
 		H4     => HEX4,
-		h5     => HEX5
+		H5     => HEX5
     );
 END ARCHITECTURE;

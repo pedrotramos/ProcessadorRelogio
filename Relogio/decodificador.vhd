@@ -11,8 +11,8 @@ ENTITY decodificador IS
   PORT (
     -- Input ports
     dataIN : IN std_logic_vector(DATA_WIDTH - 1 DOWNTO 0);
-    store  : IN std_logic; --PRA QUE
-    load   : IN std_logic; --PRA QUE
+    store  : IN std_logic; 
+    load   : IN std_logic; 
     -- Output ports
     habilitaDsp    : OUT std_logic_vector(5 DOWNTO 0);
     habilitaKey    : OUT std_logic_vector(3 DOWNTO 0);
@@ -30,11 +30,11 @@ ARCHITECTURE arch_name OF decodificador IS
   -- base tempo: 1 endereco       [x14]
   -- limpa base tempo: 1 endereco [x15]
   -- 
-  -- 
+
 BEGIN
-  habilitaSW(0) <= '1' WHEN (DataIN = x"00" AND load = '1') ELSE -- SW[0]: seleciona AM/PM ou 24h
+  habilitaSW(0) <= '1' WHEN (DataIN = x"00" AND load = '1') ELSE -- SW[0]: seleciona timer/countdown
   '0';
-  habilitaSW(1) <= '1' WHEN (DataIN = x"01" AND load = '1') ELSE -- SW[1]: 
+  habilitaSW(1) <= '1' WHEN (DataIN = x"01" AND load = '1') ELSE -- SW[1]: seleciona AM/PM ou 24h
   '0';
   habilitaSW(2) <= '1' WHEN (DataIN = x"02" AND load = '1') ELSE -- SW[2]: ativa configuracao para incrementos
   '0';
@@ -48,10 +48,6 @@ BEGIN
   '0';
   habilitaSW(7) <= '1' WHEN (DataIN = x"07" AND load = '1') ELSE -- SW[7]: sem funcionalidade
   '0';
-  -- habilitaSW(8) <= '1' WHEN (DataIN = x"08" AND load = '1') ELSE -- SW[8]: sem funcionalidade
-  -- '0';
-  -- habilitaSW(9) <= '1' WHEN (DataIN = x"09" AND load = '1') ELSE -- SW[9]: sem funcionalidade
-  -- '0';
 
   habilitaKey(0) <= '1' WHEN (DataIN = x"0A" AND load = '1') ELSE -- Botao incrementa unidade minuto
   '0';
@@ -75,10 +71,10 @@ BEGIN
   habilitaDsp(5) <= '1' WHEN (DataIN = x"13" AND store = '1') ELSE -- Display dezena hora
   '0';
 
-  habilitaBtempo <= '1' WHEN (DataIN = x"14" AND load = '1') ELSE
+  habilitaBtempo <= '1' WHEN (DataIN = x"14" AND load = '1') ELSE -- Habilita Base de tempo
     '0';
 
-  clearBtempo <= '1' WHEN (DataIN = x"15" AND load = '1') ELSE -- Limpa base de tempo -> loadio  
+  clearBtempo <= '1' WHEN (DataIN = x"15" AND load = '1') ELSE -- Limpa base de tempo -> getio  
     '0';
 
 END ARCHITECTURE;

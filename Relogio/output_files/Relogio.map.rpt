@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Relogio
-Mon Oct 12 10:09:17 2020
+Mon Oct 12 11:32:58 2020
 Quartus Prime Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition
 
 
@@ -66,13 +66,13 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +---------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Mon Oct 12 10:09:16 2020       ;
+; Analysis & Synthesis Status     ; Successful - Mon Oct 12 11:32:58 2020       ;
 ; Quartus Prime Version           ; 20.1.0 Build 711 06/05/2020 SJ Lite Edition ;
 ; Revision Name                   ; Relogio                                     ;
 ; Top-level Entity Name           ; Relogio                                     ;
 ; Family                          ; Cyclone V                                   ;
 ; Logic utilization (in ALMs)     ; N/A                                         ;
-; Total registers                 ; 314                                         ;
+; Total registers                 ; 336                                         ;
 ; Total pins                      ; 55                                          ;
 ; Total virtual pins              ; 0                                           ;
 ; Total block memory bits         ; 0                                           ;
@@ -223,25 +223,25 @@ https://fpgasoftware.intel.com/eula.
 +---------------------------------------------+----------------+
 ; Resource                                    ; Usage          ;
 +---------------------------------------------+----------------+
-; Estimate of Logic utilization (ALMs needed) ; 367            ;
+; Estimate of Logic utilization (ALMs needed) ; 381            ;
 ;                                             ;                ;
-; Combinational ALUT usage for logic          ; 308            ;
+; Combinational ALUT usage for logic          ; 337            ;
 ;     -- 7 input functions                    ; 66             ;
 ;     -- 6 input functions                    ; 107            ;
-;     -- 5 input functions                    ; 57             ;
-;     -- 4 input functions                    ; 24             ;
-;     -- <=3 input functions                  ; 54             ;
+;     -- 5 input functions                    ; 60             ;
+;     -- 4 input functions                    ; 27             ;
+;     -- <=3 input functions                  ; 77             ;
 ;                                             ;                ;
-; Dedicated logic registers                   ; 314            ;
+; Dedicated logic registers                   ; 336            ;
 ;                                             ;                ;
 ; I/O pins                                    ; 55             ;
 ;                                             ;                ;
 ; Total DSP Blocks                            ; 0              ;
 ;                                             ;                ;
 ; Maximum fan-out node                        ; CLOCK_50~input ;
-; Maximum fan-out                             ; 313            ;
-; Total fan-out                               ; 3180           ;
-; Average fan-out                             ; 4.34           ;
+; Maximum fan-out                             ; 335            ;
+; Total fan-out                               ; 3320           ;
+; Average fan-out                             ; 4.24           ;
 +---------------------------------------------+----------------+
 
 
@@ -250,10 +250,10 @@ https://fpgasoftware.intel.com/eula.
 +-----------------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-----------------------------------------------------------------------------------------------+-----------------------------+--------------+
 ; Compilation Hierarchy Node                                ; Combinational ALUTs ; Dedicated Logic Registers ; Block Memory Bits ; DSP Blocks ; Pins ; Virtual Pins ; Full Hierarchy Name                                                                           ; Entity Name                 ; Library Name ;
 +-----------------------------------------------------------+---------------------+---------------------------+-------------------+------------+------+--------------+-----------------------------------------------------------------------------------------------+-----------------------------+--------------+
-; |Relogio                                                  ; 308 (0)             ; 314 (0)                   ; 0                 ; 0          ; 55   ; 0            ; |Relogio                                                                                      ; Relogio                     ; work         ;
+; |Relogio                                                  ; 337 (0)             ; 336 (0)                   ; 0                 ; 0          ; 55   ; 0            ; |Relogio                                                                                      ; Relogio                     ; work         ;
 ;    |decodificador:Decodificador|                          ; 16 (16)             ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Relogio|decodificador:Decodificador                                                          ; decodificador               ; work         ;
-;    |divisorGenerico_e_Interface:interfaceBaseTempo|       ; 4 (0)               ; 5 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Relogio|divisorGenerico_e_Interface:interfaceBaseTempo                                       ; divisorGenerico_e_Interface ; work         ;
-;       |divisorGenerico:baseTempo|                         ; 4 (4)               ; 4 (4)                     ; 0                 ; 0          ; 0    ; 0            ; |Relogio|divisorGenerico_e_Interface:interfaceBaseTempo|divisorGenerico:baseTempo             ; divisorGenerico             ; work         ;
+;    |divisorGenerico_e_Interface:interfaceBaseTempo|       ; 33 (0)              ; 27 (0)                    ; 0                 ; 0          ; 0    ; 0            ; |Relogio|divisorGenerico_e_Interface:interfaceBaseTempo                                       ; divisorGenerico_e_Interface ; work         ;
+;       |divisorGenerico:baseTempo|                         ; 33 (33)             ; 26 (26)                   ; 0                 ; 0          ; 0    ; 0            ; |Relogio|divisorGenerico_e_Interface:interfaceBaseTempo|divisorGenerico:baseTempo             ; divisorGenerico             ; work         ;
 ;       |flipFlop:registra1Segundo|                         ; 0 (0)               ; 1 (1)                     ; 0                 ; 0          ; 0    ; 0            ; |Relogio|divisorGenerico_e_Interface:interfaceBaseTempo|flipFlop:registra1Segundo             ; flipFlop                    ; work         ;
 ;    |interfaceBOTOES:entradaBotoes|                        ; 1 (1)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Relogio|interfaceBOTOES:entradaBotoes                                                        ; interfaceBOTOES             ; work         ;
 ;    |interfaceCHAVES:entradaChaves|                        ; 6 (6)               ; 0 (0)                     ; 0                 ; 0          ; 0    ; 0            ; |Relogio|interfaceCHAVES:entradaChaves                                                        ; interfaceCHAVES             ; work         ;
@@ -284,8 +284,8 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +----------------------------------------------+-------+
 ; Statistic                                    ; Value ;
 +----------------------------------------------+-------+
-; Total registers                              ; 314   ;
-; Number of registers using Synchronous Clear  ; 0     ;
+; Total registers                              ; 336   ;
+; Number of registers using Synchronous Clear  ; 25    ;
 ; Number of registers using Synchronous Load   ; 264   ;
 ; Number of registers using Asynchronous Clear ; 1     ;
 ; Number of registers using Asynchronous Load  ; 0     ;
@@ -299,7 +299,7 @@ Note: For table entries with two numbers listed, the numbers in parentheses indi
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------------------+
 ; Multiplexer Inputs ; Bus Width ; Baseline Area ; Area if Restructured ; Saving if Restructured ; Registered ; Example Multiplexer Output                                                     ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------------------+
-; 3:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |Relogio|processador:Processador|fluxoDados:FD|ULA:ULA|saida[5]                ;
+; 3:1                ; 8 bits    ; 16 LEs        ; 16 LEs               ; 0 LEs                  ; No         ; |Relogio|processador:Processador|fluxoDados:FD|ULA:ULA|saida[1]                ;
 ; 8:1                ; 2 bits    ; 10 LEs        ; 10 LEs               ; 0 LEs                  ; No         ; |Relogio|interfaceDISPLAYS:Displays|conversorHex7Seg:DISPLAY0|rascSaida7seg[0] ;
 ; 11:1               ; 2 bits    ; 14 LEs        ; 14 LEs               ; 0 LEs                  ; No         ; |Relogio|interfaceDISPLAYS:Displays|conversorHex7Seg:DISPLAY0|rascSaida7seg[4] ;
 +--------------------+-----------+---------------+----------------------+------------------------+------------+--------------------------------------------------------------------------------+
@@ -468,11 +468,11 @@ Note: In order to hide this table in the UI and the text report file, please set
 
 +-----------------------------------------------------------------------------------------------------------------------+
 ; Parameter Settings for User Entity Instance: divisorGenerico_e_Interface:interfaceBaseTempo|divisorGenerico:baseTempo ;
-+----------------+-------+----------------------------------------------------------------------------------------------+
-; Parameter Name ; Value ; Type                                                                                         ;
-+----------------+-------+----------------------------------------------------------------------------------------------+
-; divisor        ; 5     ; Signed Integer                                                                               ;
-+----------------+-------+----------------------------------------------------------------------------------------------+
++----------------+----------+-------------------------------------------------------------------------------------------+
+; Parameter Name ; Value    ; Type                                                                                      ;
++----------------+----------+-------------------------------------------------------------------------------------------+
+; divisor        ; 25000000 ; Signed Integer                                                                            ;
++----------------+----------+-------------------------------------------------------------------------------------------+
 Note: In order to hide this table in the UI and the text report file, please set the "Show Parameter Settings in Synthesis Report" option in "Analysis and Synthesis Settings -> More Settings" to "Off".
 
 
@@ -539,30 +539,30 @@ Note: In order to hide this table in the UI and the text report file, please set
 +-----------------------+-----------------------------+
 ; Type                  ; Count                       ;
 +-----------------------+-----------------------------+
-; arriav_ff             ; 314                         ;
+; arriav_ff             ; 336                         ;
 ;     CLR               ; 1                           ;
 ;     ENA               ; 42                          ;
 ;     ENA SLD           ; 256                         ;
+;     SCLR              ; 25                          ;
 ;     SLD               ; 8                           ;
-;     plain             ; 7                           ;
-; arriav_lcell_comb     ; 308                         ;
-;     arith             ; 19                          ;
-;         1 data inputs ; 10                          ;
+;     plain             ; 4                           ;
+; arriav_lcell_comb     ; 337                         ;
+;     arith             ; 44                          ;
+;         1 data inputs ; 35                          ;
 ;         4 data inputs ; 1                           ;
 ;         5 data inputs ; 8                           ;
 ;     extend            ; 66                          ;
 ;         7 data inputs ; 66                          ;
-;     normal            ; 223                         ;
-;         1 data inputs ; 1                           ;
-;         2 data inputs ; 13                          ;
-;         3 data inputs ; 30                          ;
-;         4 data inputs ; 23                          ;
-;         5 data inputs ; 49                          ;
+;     normal            ; 227                         ;
+;         2 data inputs ; 14                          ;
+;         3 data inputs ; 28                          ;
+;         4 data inputs ; 26                          ;
+;         5 data inputs ; 52                          ;
 ;         6 data inputs ; 107                         ;
 ; boundary_port         ; 55                          ;
 ;                       ;                             ;
 ; Max LUT depth         ; 8.60                        ;
-; Average LUT depth     ; 5.47                        ;
+; Average LUT depth     ; 5.27                        ;
 +-----------------------+-----------------------------+
 
 
@@ -571,7 +571,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 +----------------+--------------+
 ; Partition Name ; Elapsed Time ;
 +----------------+--------------+
-; Top            ; 00:00:02     ;
+; Top            ; 00:00:01     ;
 +----------------+--------------+
 
 
@@ -581,7 +581,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition
-    Info: Processing started: Mon Oct 12 10:09:03 2020
+    Info: Processing started: Mon Oct 12 11:32:44 2020
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Relogio -c Relogio
 Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
 Info (12021): Found 2 design units, including 1 entities, in source file interfacedisplays.vhd
@@ -671,14 +671,14 @@ Warning (13046): Tri-state node(s) do not directly drive top-level pin(s)
 Info (286030): Timing-Driven Synthesis is running
 Info (16010): Generating hard_block partition "hard_block:auto_generated_inst"
     Info (16011): Adding 0 node(s), including 0 DDIO, 0 PLL, 0 transceiver and 0 LCELL
-Info (21057): Implemented 662 device resources after synthesis - the final resource count might be different
+Info (21057): Implemented 691 device resources after synthesis - the final resource count might be different
     Info (21058): Implemented 13 input pins
     Info (21059): Implemented 42 output pins
-    Info (21061): Implemented 607 logic cells
+    Info (21061): Implemented 636 logic cells
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 9 warnings
     Info: Peak virtual memory: 4848 megabytes
-    Info: Processing ended: Mon Oct 12 10:09:17 2020
+    Info: Processing ended: Mon Oct 12 11:32:58 2020
     Info: Elapsed time: 00:00:14
-    Info: Total CPU time (on all processors): 00:00:26
+    Info: Total CPU time (on all processors): 00:00:25
 
 
