@@ -3,12 +3,12 @@ USE ieee.std_logic_1164.ALL;
 
 ENTITY interfaceBOTOES IS
   GENERIC (
-    dataWidth : NATURAL := 8
+    dataWidth : NATURAL := 4
   );
   PORT (
-    entrada  : IN std_logic_vector(3 DOWNTO 0);
-    habilita : IN std_logic_vector(3 DOWNTO 0);
-    saida    : OUT std_logic_vector(dataWidth - 1 DOWNTO 0)
+    entrada  : IN std_logic_vector(dataWidth - 1 DOWNTO 0);
+    habilita : IN std_logic_vector(dataWidth - 1 DOWNTO 0);
+    saida    : OUT std_logic_vector(7 DOWNTO 0)
   );
 END ENTITY;
 

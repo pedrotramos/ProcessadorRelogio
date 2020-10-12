@@ -12,7 +12,8 @@ ENTITY Relogio IS
     -- Input ports
     CLOCK_50 : IN std_logic;
     SW       : IN std_logic_vector(7 DOWNTO 0);
-    KEY      : IN std_logic_vector(3 DOWNTO 0)
+    KEY      : IN std_logic_vector(3 DOWNTO 0);
+	 HEX0, HEX1, HEX2, HEX3, HEX4, HEX5 : OUT STD_LOGIC_VECTOR(6 DOWNTO 0)
   );
 END ENTITY;
 ARCHITECTURE arch_name OF Relogio IS
@@ -79,6 +80,12 @@ BEGIN
     PORT MAP(
       dataIN => write_hex,
       enable => habilitaDsp,
-      clk    => CLOCK_50
+      clk    => CLOCK_50,
+		H0     => HEX0,
+		H1     => HEX1,
+		H2     => HEX2, 
+		H3     => HEX3,
+		H4     => HEX4,
+		h5     => HEX5
     );
 END ARCHITECTURE;

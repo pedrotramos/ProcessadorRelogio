@@ -53,23 +53,17 @@ set_global_assignment -name VHDL_INPUT_VERSION VHDL_2008
 set_global_assignment -name VHDL_SHOW_LMF_MAPPING_MESSAGES OFF
 set_global_assignment -name TIMING_ANALYZER_MULTICORNER_ANALYSIS ON
 set_global_assignment -name NUM_PARALLEL_PROCESSORS ALL
-set_global_assignment -name VHDL_FILE muxGenerico2x1.vhd
-set_global_assignment -name VHDL_FILE registradorGenerico.vhd
-set_global_assignment -name VHDL_FILE somaConstante.vhd
-set_global_assignment -name VHDL_FILE memoriaROM.vhd
-set_global_assignment -name VHDL_FILE Relogio.vhd
-set_global_assignment -name VHDL_FILE fluxoDados.vhd
-set_global_assignment -name VHDL_FILE flipFlop.vhd
-set_global_assignment -name VHDL_FILE ULA.vhd
-set_global_assignment -name VHDL_FILE Unidade_Controle.vhd
-set_global_assignment -name VHDL_FILE processador.vhd
-set_global_assignment -name VHDL_FILE conversorHex7Seg.vhd
-set_global_assignment -name VHDL_FILE bancoRegistradoresArqRegMem.vhd
-set_global_assignment -name VHDL_FILE decodificador.vhd
-set_global_assignment -name VHDL_FILE interfaceCHAVES.vhd
 set_global_assignment -name PARTITION_NETLIST_TYPE SOURCE -section_id Top
 set_global_assignment -name PARTITION_FITTER_PRESERVATION_LEVEL PLACEMENT_AND_ROUTING -section_id Top
 set_global_assignment -name PARTITION_COLOR 16764057 -section_id Top
+
+#============================================================
+# FAMILY "Cyclone V"
+# DEVICE 5CEBA4F23C7N
+# Board DE0-CV
+#============================================================
+
+# Inicio da configuração dos pinos.
 
 #============================================================
 # CLOCK
@@ -196,8 +190,53 @@ set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to KEY[0]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to KEY[1]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to KEY[2]
 set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to KEY[3]
-set_global_assignment -name VHDL_FILE divisorGenerico.vhd
-set_global_assignment -name VHDL_FILE divisorGenerico_e_Interface.vhd
+
+
+#============================================================
+# SW
+#============================================================
+set_location_assignment PIN_U13 -to SW[0]
+set_location_assignment PIN_V13 -to SW[1]
+set_location_assignment PIN_T13 -to SW[2]
+set_location_assignment PIN_T12 -to SW[3]
+set_location_assignment PIN_AA15 -to SW[4]
+set_location_assignment PIN_AB15 -to SW[5]
+set_location_assignment PIN_AA14 -to SW[6]
+set_location_assignment PIN_AA13 -to SW[7]
+set_location_assignment PIN_AB13 -to SW[8]
+set_location_assignment PIN_AB12 -to SW[9]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SW[0]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SW[1]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SW[2]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SW[3]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SW[4]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SW[5]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SW[6]
+set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SW[7]
+#set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SW[8]
+#set_instance_assignment -name IO_STANDARD "3.3-V LVTTL" -to SW[9]
+
+#====================================================================
+# Fim da configuração dos pinos utilizados em Design de Computadores.
+#====================================================================
+
+
 set_global_assignment -name VHDL_FILE interfaceDISPLAYS.vhd
+set_global_assignment -name VHDL_FILE divisorGenerico_e_Interface.vhd
+set_global_assignment -name VHDL_FILE divisorGenerico.vhd
+set_global_assignment -name VHDL_FILE muxGenerico2x1.vhd
+set_global_assignment -name VHDL_FILE registradorGenerico.vhd
+set_global_assignment -name VHDL_FILE somaConstante.vhd
+set_global_assignment -name VHDL_FILE memoriaROM.vhd
+set_global_assignment -name VHDL_FILE Relogio.vhd
+set_global_assignment -name VHDL_FILE fluxoDados.vhd
+set_global_assignment -name VHDL_FILE flipFlop.vhd
+set_global_assignment -name VHDL_FILE ULA.vhd
+set_global_assignment -name VHDL_FILE Unidade_Controle.vhd
+set_global_assignment -name VHDL_FILE processador.vhd
+set_global_assignment -name VHDL_FILE conversorHex7Seg.vhd
+set_global_assignment -name VHDL_FILE bancoRegistradoresArqRegMem.vhd
+set_global_assignment -name VHDL_FILE decodificador.vhd
+set_global_assignment -name VHDL_FILE interfaceCHAVES.vhd
 set_global_assignment -name VHDL_FILE interfaceBOTOES.vhd
 set_instance_assignment -name PARTITION_HIERARCHY root_partition -to | -section_id Top
