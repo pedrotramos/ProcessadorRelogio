@@ -53,7 +53,7 @@ ARCHITECTURE arch_name OF Unidade_Controle IS
     -- display    0         0         0                0                 000            0         0    1
     -- getIO      0         0         0                1                 010            0         1    0
     -- je         0         1         x                x                 xxx            0         0    0
-    -- mov        0         0         1                1                 011            0         0    0
+    -- mov        0         0         1                1                 010            0         0    0
 
 BEGIN
     WITH opCode SELECT
@@ -74,11 +74,9 @@ BEGIN
         "001" WHEN opCodeCmp,
         "001" WHEN opCodeSub,
         "010" WHEN opCodeGetIO,
-        "011" WHEN opCodeMov,
-        -- falta caso Je
+        "010" WHEN opCodeMov,
         "000" WHEN OTHERS;
 
-    -- falta caso Je
     selMuxProxPC       <= jmp;
     selJe              <= je;
     selMuxIOImed       <= cmp OR add OR sub OR mov;
