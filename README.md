@@ -1,13 +1,13 @@
 # Projeto 1-Design de Computadores
 ### Alunos: Matheus Pellizzon, Pedro Teófilo Ramos e Pedro Paulo Telho
-<br>
+<br />
 
 ### Diagrama da arquitetura 
 <p align="center">
   <img src="top_level_rtl.jpg" width="1000" title="RTL viewer">
 </p>
+<br />
 
-<br>
 ### Configurações dos componentes
 
 ##### Switches
