@@ -4,7 +4,7 @@
 
 ### Diagrama da arquitetura 
 <p align="center">
-  <img src="top_level_rtl.jpg" width="350" title="RTL viewer">
+  <img src="top_level_rtl.jpg" width="1000" title="RTL viewer">
 </p>
 
 
