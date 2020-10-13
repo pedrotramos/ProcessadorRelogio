@@ -73,7 +73,8 @@ BEGIN
       clk              => CLOCK_50,
       habilitaLeitura  => habilitaBtempo,
       limpaLeitura     => clearBtempo,
-      leituraUmSegundo => barramento_entradaProcessador
+      leituraUmSegundo => barramento_entradaProcessador,
+		selBaseTempo     => SW(4)
     );
 
   Displays : ENTITY work.interfaceDISPLAYS
