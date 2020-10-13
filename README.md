@@ -2,6 +2,12 @@
 ### Alunos: Matheus Pellizzon, Pedro Teófilo Ramos e Pedro Paulo Telho
 <br>
 
+### Diagrama da arquitetura 
+<p align="center">
+  <img src="top_level_rtl.jpg" width="350" title="RTL viewer">
+</p>
+
+
 ### Configurações dos componentes
 
 ##### Switches
