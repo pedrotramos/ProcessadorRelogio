@@ -35,10 +35,10 @@
 ##### Opcionais
 ###### sobem meio conceito (+)
 - [x] indicação do horário com base em 12 horas - AM/PM
-- [] sistema de despertador
-- [] temporizador com contagem regressiva
+- [ ] sistema de despertador
+- [ ] temporizador com contagem regressiva
 
 ###### sobem um conceito
 - [x] assembler em Python
-- [] pilha controlada por hardware
-- [] instrução de chamada de sub-rotina com um nível 
+- [ ] pilha controlada por hardware
+- [ ] instrução de chamada de sub-rotina com um nível 
