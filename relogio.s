@@ -312,26 +312,69 @@ RST_H:
 
 TIMER:
 CONFIG_TIMER:
-KEY0:
+TKEY0:
     getio $10, %key0
     cmp $0, %key0
-    je SET_S
+    je TKR0
 
-KEY1:
+TKEY1:
     getio $11, %key1
     cmp $0, %key1
-    je SET_M
+    je TKR1
 
-KEY2:
+TKEY2:
     getio $12, %key2
     cmp $0, %key2
-    je SET_H
+    je TKR2
 
-KEY3:
+TKEY3:
     getio $13, %key3
     cmp $0, %key3
-    je PLAY_TIMER
-    jmp DISPLAY_TIMER 
+    je TKR3
+    jmp SET_BASE
+
+TKR0:
+    getio $10, %key0
+    cmp $1, %key0
+    je SET_S
+    getio $20, %time
+    cmp $1, %time
+    je SET_S
+    jmp TKR0
+
+TKR1:
+    getio $11, %key1
+    cmp $1, %key1
+    je SET_M
+    getio $20, %time
+    cmp $1, %time
+    je SET_M
+    jmp TKR1
+
+TKR2:
+    getio $12, %key2
+    cmp $1, %key2
+    je SET_H
+    getio $20, %time
+    cmp $1, %time
+    je SET_H
+    jmp TKR2 
+
+TKR3:
+    mov $0, %play
+    getio $13, %key3
+    cmp $1, %key3
+    je PLAY_PAUSE
+    getio $20, %time
+    cmp $1, %time
+    je PLAY_PAUSE
+    jmp TKR3
+
+PLAY_PAUSE:
+    cmp $1, %play
+    je PAUSE_TIMER
+    mov $1, %play
+    jmp PLAY_TIMER
 
 SET_S:
     cmp $9, %tsu
@@ -393,15 +436,18 @@ DISPLAY_TIMER:
 	display $17, %tmd
 	display $18, %thu
 	display $19, %thd
-    jmp SECOND
+    jmp TSECOND
+
+PAUSE_TIMER:
+    jmp TKEY3
 
 PLAY_TIMER:
-SECOND:
+TSECOND:
     # Checa se passa 1 segundo
     getio $20, %time
     cmp $1, %time
     je TSU
-    jmp MAIN 
+    jmp SU 
 
 TSU:
     # Reset do time
@@ -413,7 +459,7 @@ TSU:
     # Caso contrário, incrementa a unidade de segundo e reinicia o loop 
     # principal.
     sub $1, %tsu
-    jmp SU
+    jmp DISPLAY_TIMER
 
 TSD:
     # Zera a unidade de segundo.
@@ -425,7 +471,7 @@ TSD:
     # Caso contrário, incrementa a dezena de segundo e reinicia o loop 
     # principal.
     sub $1, %tsd
-    jmp SU
+    jmp DISPLAY_TIMER
 
 TMU:
     # Zera a dezena de segundo.
@@ -437,7 +483,7 @@ TMU:
     # Caso contrário, incrementa a unidade de minuto e reinicia o loop 
     # principal.
     sub $1, %tmu
-    jmp SU
+    jmp DISPLAY_TIMER
 
 TMD:
     # Zera a unidade de minuto.
@@ -449,7 +495,7 @@ TMD:
     # Caso contrário, incrementa a dezena de minuto e reinicia o loop 
     # principal.
     sub $1, %tmd
-    jmp SU
+    jmp DISPLAY_TIMER
 
 THU:
     # Zera a dezena de minuto.
@@ -460,11 +506,17 @@ THU:
     je THD
     # Caso contrário, incrementa a unidade de hora e reinicia o loop principal.
     sub $1, %thu
-    jmp SU
+    jmp DISPLAY_TIMER
 
 THD:
+    cmp $0, %thd
+    je END_TIMER
     # Zera a unidade de hora.
     mov $9, %thu
     # Incrementa a unidade de hora e reinicia o loop principal.
     sub $1, %thd
-    jmp SU
+    jmp DISPLAY_TIMER
+
+END_TIMER:
+    mov $0, %play
+    jmp DISPLAY_TIMER
