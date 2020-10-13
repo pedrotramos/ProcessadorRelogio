@@ -143,6 +143,7 @@ class Line_Assemble:
             "key1": "22",
             "key2": "23",
             "key3": "24",
+            "play": "25",
         }
 
         r = bindigits(int(table[register], 10), 5)
