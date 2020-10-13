@@ -32,13 +32,13 @@ ARCHITECTURE arch_name OF decodificador IS
   -- 
 
 BEGIN
-  habilitaSW(0) <= '1' WHEN (DataIN = x"00" AND load = '1') ELSE -- SW[0]: seleciona timer/countdown
+  habilitaSW(0) <= '1' WHEN (DataIN = x"00" AND load = '1') ELSE -- SW[0]: seleciona AM/PM ou 24h
   '0';
-  habilitaSW(1) <= '1' WHEN (DataIN = x"01" AND load = '1') ELSE -- SW[1]: seleciona AM/PM ou 24h
+  habilitaSW(1) <= '1' WHEN (DataIN = x"01" AND load = '1') ELSE -- SW[1]: seleciona timer/countdown
   '0';
   habilitaSW(2) <= '1' WHEN (DataIN = x"02" AND load = '1') ELSE -- SW[2]: ativa configuracao para incrementos
   '0';
-  habilitaSW(3) <= '1' WHEN (DataIN = x"03" AND load = '1') ELSE -- SW[3]: sem funcionalidade
+  habilitaSW(3) <= '1' WHEN (DataIN = x"03" AND load = '1') ELSE -- SW[3]: sem funcionalidade programável, mas funciona pra selecionar  abase de tempo usada
   '0';
   habilitaSW(4) <= '1' WHEN (DataIN = x"04" AND load = '1') ELSE -- SW[4]: sem funcionalidade
   '0';
@@ -53,9 +53,9 @@ BEGIN
   '0';
   habilitaKey(1) <= '1' WHEN (DataIN = x"0B" AND load = '1') ELSE -- Botao incrementa dezena minuto
   '0';
-  habilitaKey(2) <= '1' WHEN (DataIN = x"0C" AND load = '1') ELSE -- Botao incrementa unidade hora
+  habilitaKey(2) <= '1' WHEN (DataIN = x"0C" AND load = '1') ELSE -- Botao incrementa hora (tanto dezena quanto unidade)
   '0';
-  habilitaKey(3) <= '1' WHEN (DataIN = x"0D" AND load = '1') ELSE -- Botao incrementa dezena hora
+  habilitaKey(3) <= '1' WHEN (DataIN = x"0D" AND load = '1') ELSE -- KEY(3): sem funcionalidade
   '0';
 
   habilitaDsp(0) <= '1' WHEN (DataIN = x"0E" AND store = '1') ELSE -- Display unidade segundo 

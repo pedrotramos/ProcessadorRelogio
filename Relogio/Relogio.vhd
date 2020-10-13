@@ -74,7 +74,7 @@ BEGIN
       habilitaLeitura  => habilitaBtempo,
       limpaLeitura     => clearBtempo,
       leituraUmSegundo => barramento_entradaProcessador,
-		selBaseTempo     => SW(4)
+		selBaseTempo     => SW(3)
     );
 
   Displays : ENTITY work.interfaceDISPLAYS

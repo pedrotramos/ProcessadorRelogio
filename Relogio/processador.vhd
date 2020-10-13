@@ -32,7 +32,7 @@ BEGIN
             palavraControle => palavraControle(9 DOWNTO 2), -- nao precisamos passar o habilita leitura e escrita do decodificador
             opCode          => opCode,
             toDecode        => toDecode,
-            dataOUT         => saidaBancoReg
+            dataOUT         => saidaBancoReg -- saida com 8 bits... Necessitamos apenas 4 para os displays
         );
 
     UC : ENTITY work.Unidade_Controle
@@ -42,8 +42,8 @@ BEGIN
             clk             => clk
         );
 
-    load        <= palavraControle(1);
-    store       <= palavraControle(0);
+    load        <= palavraControle(1); -- usado no top_level, no decodificador
+    store       <= palavraControle(0); -- usado no top_level, no decodificador
     dadoDsp     <= saidaBancoReg(3 DOWNTO 0);
-    outToDecode <= toDecode;
+    outToDecode <= toDecode; -- endereco para o decodificador
 END ARCHITECTURE;
