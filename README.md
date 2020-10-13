@@ -24,3 +24,8 @@
   <li>Key 1: incrementa dezena de minuto;</li>
   <li>Key 2: incrementa hora.</li>
 </ul>
+
+
+- [ ] Timer
+- [x] relogio funcionando
+- [ ]
