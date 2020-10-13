@@ -22,7 +22,6 @@ timing
 # ignore Quartus II generated files
 *.rpt
 *.sld
-*.txt
 *_generation_script*
 *_inst.vhd
 *.bak
