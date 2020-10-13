@@ -151,11 +151,8 @@ AMPM_CHECK_AP11:
     jmp HU_P2
 
 AMPM_CHECK_AP12:
-    cmp $15, %ampm
-    je START
     mov $1, %hu2
     mov $0, %hd2
-    mov $15, %ampm
     jmp HU_P2
 
 HU2:
@@ -166,7 +163,7 @@ HU2:
 
 HD2:
     mov $0, %hu2
-    add $1, %hd
+    add $1, %hd2
 
 HU_P2:
     # Checa se a unidade das horas vale 9.
@@ -199,11 +196,6 @@ KEY2:
     getio $12, %key2
     cmp $0, %key2
     je KR2
-
-KEY3:
-    getio $13, %key3
-    cmp $0, %key3
-    je KR3
     jmp SET_BASE
 
 KR0:
@@ -233,77 +225,14 @@ KR2:
     je SET_HU
     jmp KR2
 
-KR3:
-    getio $13, %key3
-    cmp $1, %key3
-    je SET_HD
-    getio $20, %time
-    cmp $1, %time
-    je SET_HD
-    jmp KR3
-
-SET_HD:
-    cmp $2, %hd
-    je RST_HD
-    add $1, %hd
-
-SET_HD2:
-    cmp $1, %hd2
-    je RST_HD2
-    add $1, %hd2
+SET_MU:
+    cmp $9, %mu
+    je RST_MU
+    add $1, %mu
     jmp SET_BASE
 
-RST_HD:
-    mov $0, %hd
-    jmp SET_HD2
-
-RST_HD2:
-    sub $1, %hd2
-    cmp $15, %ampm
-    je TURN_AM
-    jmp TURN_PM
-
-TURN_AM:
-    mov $10, %ampm
-    jmp SET_BASE
-
-TURN_PM:
-    mov $15, %ampm
-    jmp SET_BASE
-
-SET_HU:
-    cmp $9, %hu
-    je RST_HU
-    cmp $3, %hu
-    je CHECK_END
-    add $1, %hu
-
-SET_HU2:
-    cmp $9, %hu2
-    je RST_HU2
-    cmp $2, %hu2
-    je CHECK_END2
-    add $1, %hu2
-    jmp SET_BASE
-
-CHECK_END:
-    cmp $2, %hd
-    je RST_HU
-    add $1, %hu
-    jmp SET_HU2
-
-CHECK_END2:
-    cmp $1, %hd2
-    je RST_HU
-    add $1, %hu2
-    jmp SET_BASE
-
-RST_HU:
-    mov $0, %hu
-    jmp SET_HU2
-
-RST_HU2:
-    mov $1, %hu2
+RST_MU:
+    mov $0, %mu
     jmp SET_BASE
 
 SET_MD:
@@ -316,14 +245,69 @@ RST_MD:
     mov $0, %md
     jmp SET_BASE
 
-SET_MU:
-    cmp $9, %mu
-    je RST_MU
-    add $1, %mu
+SET_HU:
+    cmp $1, %hu2
+    je SET_AMPM_CHECK_HD11
+    cmp $2, %hu2
+    je SET_AMPM_CHECK_HD12
+    jmp SET_HU2
+
+SET_AMPM_CHECK_HD11:
+    cmp $1, %hd2
+    je SET_AMPM_CHECK_AP11
+    add $1, %hu2
+    jmp SET_HU_P2
+
+SET_AMPM_CHECK_HD12:
+    cmp $1, %hd2
+    je SET_AMPM_CHECK_AP12
+    add $1, %hu2
+    jmp SET_HU_P2
+
+SET_AMPM_CHECK_AP11:
+    cmp $15, %ampm
+    je RST_H
+    add $1, %hu2
+    mov $15, %ampm
+    jmp SET_HU_P2
+
+SET_AMPM_CHECK_AP12:
+    mov $1, %hu2
+    mov $0, %hd2
+    jmp SET_HU_P2
+
+SET_HU2:
+    cmp $9, %hu2
+    je SET_HD2
+    add $1, %hu2
+    jmp SET_HU_P2
+
+SET_HD2:
+    mov $0, %hu2
+    add $1, %hd2
+
+SET_HU_P2:
+    # Checa se a unidade das horas vale 9.
+    cmp $9, %hu
+    # Se verdadeiro pula para o incremento da casa das dezenas de hora.
+    je SET_HD
+    # Caso contrário, incrementa a unidade de hora e reinicia o loop principal.
+    add $1, %hu
     jmp SET_BASE
 
-RST_MU:
-    mov $0, %mu
+SET_HD:
+    # Zera a unidade de hora.
+    mov $0, %hu
+    # Incrementa a unidade de hora e reinicia o loop principal.
+    add $1, %hd
+    jmp SET_BASE
+
+RST_H:
+    mov $0, %hu
+	mov $0, %hd
+    mov $2, %hu2
+    mov $1, %hd2
+    mov $10, %ampm
     jmp SET_BASE
 
 TIMER:
