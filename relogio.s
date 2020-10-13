@@ -188,23 +188,59 @@ CONFIG:
 KEY0:
     getio $10, %key0
     cmp $0, %key0
-    je SET_MU
+    je KR0
 
 KEY1:
     getio $11, %key1
     cmp $0, %key1
-    je SET_MD
+    je KR1
 
 KEY2:
     getio $12, %key2
     cmp $0, %key2
-    je SET_HU
+    je KR2
 
 KEY3:
     getio $13, %key3
     cmp $0, %key3
-    je SET_HD
+    je KR3
     jmp SET_BASE
+
+KR0:
+    getio $10, %key0
+    cmp $1, %key0
+    je SET_MU
+    getio $20, %time
+    cmp $1, %time
+    je SET_MU
+    jmp KR0
+
+KR1:
+    getio $11, %key1
+    cmp $1, %key1
+    je SET_MD
+    getio $20, %time
+    cmp $1, %time
+    je SET_MD
+    jmp KR1
+
+KR2:
+    getio $12, %key2
+    cmp $1, %key2
+    je SET_HU
+    getio $20, %time
+    cmp $1, %time
+    je SET_HU
+    jmp KR2
+
+KR3:
+    getio $13, %key3
+    cmp $1, %key3
+    je SET_HD
+    getio $20, %time
+    cmp $1, %time
+    je SET_HD
+    jmp KR3
 
 SET_HD:
     cmp $2, %hd
