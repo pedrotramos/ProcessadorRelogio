@@ -1,11 +1,11 @@
+# Seta os registradores do timer de hora, minuto e segundo com zero.
+mov $0, %tsu
+mov $0, %tsd
+mov $0, %tmu
+mov $0, %tmd
+mov $0, %thu
+mov $0, %thd
 START:
-    # Seta os registradores do timer de hora, minuto e segundo com zero.
-	mov $0, %tsu
-	mov $0, %tsd
-	mov $0, %tmu
-	mov $0, %tmd
-	mov $0, %thu
-	mov $0, %thd
     # Seta os registradores de hora, minuto e segundo com zero.
 	mov $0, %su
 	mov $0, %sd
@@ -27,6 +27,11 @@ NEED_CONFIG:
     # Se SW[2] = 1, vai para a configuração do relógio
     cmp $1, %config
     je CONFIG
+
+PLAY_PAUSE:
+    getio $4, %play
+    cmp $1, %play
+    je PLAY_TIMER
 
 CHECK_TIMER:
     # Pega SW[1] e passa seu valor para %base.
@@ -326,12 +331,7 @@ TKEY2:
     getio $12, %key2
     cmp $0, %key2
     je TKR2
-
-TKEY3:
-    getio $13, %key3
-    cmp $0, %key3
-    je TKR3
-    jmp SET_BASE
+    jmp DISPLAY_TIMER   
 
 TKR0:
     getio $10, %key0
@@ -358,23 +358,7 @@ TKR2:
     getio $20, %time
     cmp $1, %time
     je SET_H
-    jmp TKR2 
-
-TKR3:
-    mov $0, %play
-    getio $13, %key3
-    cmp $1, %key3
-    je PLAY_PAUSE
-    getio $20, %time
-    cmp $1, %time
-    je PLAY_PAUSE
-    jmp TKR3
-
-PLAY_PAUSE:
-    cmp $1, %play
-    je PAUSE_TIMER
-    mov $1, %play
-    jmp PLAY_TIMER
+    jmp TKR2
 
 SET_S:
     cmp $9, %tsu
@@ -436,10 +420,7 @@ DISPLAY_TIMER:
 	display $17, %tmd
 	display $18, %thu
 	display $19, %thd
-    jmp TSECOND
-
-PAUSE_TIMER:
-    jmp TKEY3
+    jmp SECOND
 
 PLAY_TIMER:
 TSECOND:
@@ -450,9 +431,7 @@ TSECOND:
     jmp SU 
 
 TSU:
-    # Reset do time
-    getio $21, %time
-    # Checa se a unidade dos segundos vale 9.
+    # Checa se a unidade dos segundos vale 0.
     cmp $0, %tsu
     # Se verdadeiro pula para a checagem da casa das dezenas de segundo.
     je TSD
@@ -518,5 +497,11 @@ THD:
     jmp DISPLAY_TIMER
 
 END_TIMER:
-    mov $0, %play
+    # Seta os registradores do timer de hora, minuto e segundo com zero.
+    mov $0, %tsu
+    mov $0, %tsd
+    mov $0, %tmu
+    mov $0, %tmd
+    mov $0, %thu
+    mov $0, %thd
     jmp DISPLAY_TIMER
