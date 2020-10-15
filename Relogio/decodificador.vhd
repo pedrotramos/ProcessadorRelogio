@@ -32,15 +32,15 @@ ARCHITECTURE arch_name OF decodificador IS
   -- 
 
 BEGIN
-  habilitaSW(0) <= '1' WHEN (DataIN = x"00" AND load = '1') ELSE -- SW[0]: seleciona AM/PM ou 24h
+  habilitaSW(0) <= '1' WHEN (DataIN = x"00" AND load = '1') ELSE -- SW[0]: sem funcionalidade programavel, mas funciona pra selecionar a base de tempo usada
   '0';
-  habilitaSW(1) <= '1' WHEN (DataIN = x"01" AND load = '1') ELSE -- SW[1]: seleciona timer/countdown
+  habilitaSW(1) <= '1' WHEN (DataIN = x"01" AND load = '1') ELSE -- SW[1]: seleciona AM/PM ou 24h
   '0';
-  habilitaSW(2) <= '1' WHEN (DataIN = x"02" AND load = '1') ELSE -- SW[2]: ativa configuracao para incrementos
+  habilitaSW(2) <= '1' WHEN (DataIN = x"02" AND load = '1') ELSE -- SW[2]: ativa configuracao do relogio
   '0';
-  habilitaSW(3) <= '1' WHEN (DataIN = x"03" AND load = '1') ELSE -- SW[3]: sem funcionalidade programável, mas funciona pra selecionar  abase de tempo usada
+  habilitaSW(3) <= '1' WHEN (DataIN = x"03" AND load = '1') ELSE -- SW[3]: ativa configuracao do timer
   '0';
-  habilitaSW(4) <= '1' WHEN (DataIN = x"04" AND load = '1') ELSE -- SW[4]: sem funcionalidade
+  habilitaSW(4) <= '1' WHEN (DataIN = x"04" AND load = '1') ELSE -- SW[4]: ativa timer
   '0';
   habilitaSW(5) <= '1' WHEN (DataIN = x"05" AND load = '1') ELSE -- SW[5]: sem funcionalidade
   '0';
