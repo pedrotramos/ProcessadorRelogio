@@ -57,13 +57,14 @@ BEGIN
   -- '0';
   -- ==============================================================
   
-  habilitaKey(0) <= '1' WHEN (DataIN = x"0A" AND load = '1') ELSE -- Botao incrementa unidade minuto
+  -- Btns usados tanto na configuracao relogio quanto timer
+  habilitaKey(0) <= '1' WHEN (DataIN = x"0A" AND load = '1') ELSE -- Botao incrementa unidade minuto 
   '0';
   habilitaKey(1) <= '1' WHEN (DataIN = x"0B" AND load = '1') ELSE -- Botao incrementa dezena minuto
   '0';
   habilitaKey(2) <= '1' WHEN (DataIN = x"0C" AND load = '1') ELSE -- Botao incrementa hora (tanto dezena quanto unidade)
   '0';
-  habilitaKey(3) <= '1' WHEN (DataIN = x"0D" AND load = '1') ELSE -- KEY(3): sem funcionalidade
+  habilitaKey(3) <= '1' WHEN (DataIN = x"0D" AND load = '1') ELSE -- sem funcionalidade relogio, zera timer
   '0';
 
   habilitaDsp(0) <= '1' WHEN (DataIN = x"0E" AND store = '1') ELSE -- Display unidade segundo 
