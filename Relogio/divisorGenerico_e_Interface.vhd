@@ -32,7 +32,9 @@ BEGIN
 			clk       => clk,
 			saida_clk => saidaclk_regRapida
 		);
-	
+		
+		
+	-- possibilita a escolha de qual base de tempo sera usada
 	muxBaseTempo : ENTITY work.mux1bit
 	  PORT MAP(
 			A => saidaclk_reg1seg,
@@ -40,7 +42,9 @@ BEGIN
 			s => selBaseTempo,
 			o => clk_usado
 	  );
-
+	  
+	  
+	-- guarda valor de saida do mux acima, para ser lido e enviado ao processador
    registra1Segundo : ENTITY work.flipFlop
       PORT MAP(
          DIN    => '1',

@@ -22,7 +22,7 @@ ARCHITECTURE arch_name OF Relogio IS
   SIGNAL barramento_entradaProcessador : std_logic_vector(DATA_WIDTH - 1 DOWNTO 0);
 
   SIGNAL write_hex   : std_logic_vector(3 DOWNTO 0); -- displays so aceitam 4 bits
-  SIGNAL load, store : std_logic;
+  SIGNAL load, store : std_logic; -- saem do processador, usados no decoder
 
   SIGNAL habilitaDsp    : std_logic_vector(5 DOWNTO 0);
   SIGNAL habilitaSw     : std_logic_vector(7 DOWNTO 0);
@@ -53,7 +53,9 @@ BEGIN
       habilitaBtempo => habilitaBtempo,
       clearBtempo    => clearBtempo
     );
-
+	 
+	 
+  -- I/O switches
   entradaChaves : ENTITY work.interfaceCHAVES
     PORT MAP(
       entrada  => SW(DATA_WIDTH - 1 DOWNTO 0),
@@ -61,6 +63,7 @@ BEGIN
       habilita => habilitaSw
     );
 
+  -- I/O buttons
   entradaBotoes : ENTITY work.interfaceBOTOES
     PORT MAP(
       entrada  => KEY(3 DOWNTO 0),
@@ -68,6 +71,7 @@ BEGIN
       habilita => habilitaKey
     );
 
+  -- I/O base de tempo	 
   interfaceBaseTempo : ENTITY work.divisorGenerico_e_Interface
     PORT MAP(
       clk              => CLOCK_50,
@@ -77,6 +81,7 @@ BEGIN
 		  selBaseTempo     => SW(0)
     );
 
+  -- I/O displays
   Displays : ENTITY work.interfaceDISPLAYS
     PORT MAP(
       dataIN => write_hex,

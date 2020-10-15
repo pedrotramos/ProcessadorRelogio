@@ -48,7 +48,15 @@ BEGIN
   '0';
   habilitaSW(7) <= '1' WHEN (DataIN = x"07" AND load = '1') ELSE -- SW[7]: sem funcionalidade
   '0';
-
+  
+  -- ==============================================================
+  -- Nao usadas nem inicializadas no qsf
+  -- habilitaSW(8) <= '1' WHEN (DataIN = x"06" AND load = '1') ELSE 
+  -- '0';
+  -- habilitaSW(9) <= '1' WHEN (DataIN = x"07" AND load = '1') ELSE
+  -- '0';
+  -- ==============================================================
+  
   habilitaKey(0) <= '1' WHEN (DataIN = x"0A" AND load = '1') ELSE -- Botao incrementa unidade minuto
   '0';
   habilitaKey(1) <= '1' WHEN (DataIN = x"0B" AND load = '1') ELSE -- Botao incrementa dezena minuto

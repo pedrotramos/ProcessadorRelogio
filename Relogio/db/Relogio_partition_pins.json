@@ -180,15 +180,15 @@
 					"strict" : false
 				},
 				{
-					"name" : "SW[5]",
-					"strict" : false
-				},
-				{
 					"name" : "SW[6]",
 					"strict" : false
 				},
 				{
 					"name" : "SW[4]",
+					"strict" : false
+				},
+				{
+					"name" : "SW[5]",
 					"strict" : false
 				},
 				{

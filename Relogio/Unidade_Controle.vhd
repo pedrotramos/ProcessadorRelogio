@@ -54,6 +54,9 @@ ARCHITECTURE arch_name OF Unidade_Controle IS
     -- getIO      0         0         0                1                 010            0         1    0
     -- je         0         1         x                x                 xxx            0         0    0
     -- mov        0         0         1                1                 010            0         0    0
+	 
+	 -- deciframos o opCode que vem da ROM
+	 -- e definimos os habilitas necessarios no processador baseado na tabela acima 
 
 BEGIN
     WITH opCode SELECT
