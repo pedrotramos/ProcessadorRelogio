@@ -2,6 +2,8 @@ LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 USE ieee.numeric_std.ALL;
 
+-- Processador formado pelo fluxo de dados e unidade de controle
+
 ENTITY processador IS
     GENERIC (
         DATA_WIDTH : NATURAL := 8;
@@ -29,9 +31,9 @@ BEGIN
         PORT MAP(
             clk             => clk,
             dataIN          => dataIN,
-            palavraControle => palavraControle(9 DOWNTO 2), -- nao precisamos passar o habilita leitura e escrita do decodificador
-            opCode          => opCode,
-            toDecode        => toDecode,
+            palavraControle => palavraControle(9 DOWNTO 2), -- nao precisamos passar o habilita leitura e escrita, eles sao usados no decodificador
+            opCode          => opCode, -- opCode que veio da ROM, sera interpretado pela UC
+            toDecode        => toDecode, -- endereco para o decodificador
             dataOUT         => saidaBancoReg -- saida com 8 bits... Necessitamos apenas 4 para os displays
         );
 
@@ -44,6 +46,6 @@ BEGIN
 
     load        <= palavraControle(1); -- usado no top_level, no decodificador
     store       <= palavraControle(0); -- usado no top_level, no decodificador
-    dadoDsp     <= saidaBancoReg(3 DOWNTO 0);
-    outToDecode <= toDecode; -- endereco para o decodificador
+    dadoDsp     <= saidaBancoReg(3 DOWNTO 0); 
+    outToDecode <= toDecode; 
 END ARCHITECTURE;

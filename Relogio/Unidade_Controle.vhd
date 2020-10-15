@@ -17,6 +17,8 @@ ENTITY Unidade_Controle IS
 END ENTITY;
 
 ARCHITECTURE arch_name OF Unidade_Controle IS
+
+	 -- aliases para a saida da unidade de controle, facilita definir cada 'habilita'
     ALIAS selMuxProxPC       : std_logic IS palavraControle(9);
     ALIAS selJe              : std_logic IS palavraControle(8);
     ALIAS selMuxIOImed       : std_logic IS palavraControle(7);
@@ -25,8 +27,9 @@ ARCHITECTURE arch_name OF Unidade_Controle IS
     ALIAS habFlipFlop        : std_logic IS palavraControle(2);
     ALIAS load               : std_logic IS palavraControle(1);
     ALIAS store              : std_logic IS palavraControle(0);
-
-    SIGNAL instrucao       : std_logic_vector(7 DOWNTO 0);
+    
+	 
+	 -- opCodes possiveis
     CONSTANT opCodeCmp     : std_logic_vector(2 DOWNTO 0) := "000";
     CONSTANT opCodeJmp     : std_logic_vector(2 DOWNTO 0) := "001";
     CONSTANT opCodeAdd     : std_logic_vector(2 DOWNTO 0) := "010";
@@ -36,6 +39,9 @@ ARCHITECTURE arch_name OF Unidade_Controle IS
     CONSTANT opCodeJe      : std_logic_vector(2 DOWNTO 0) := "110";
     CONSTANT opCodeMov     : std_logic_vector(2 DOWNTO 0) := "111";
 
+	 SIGNAL instrucao       : std_logic_vector(7 DOWNTO 0);
+	 
+	 -- aliases para instrucao
     ALIAS cmp     : std_logic IS instrucao(0);
     ALIAS jmp     : std_logic IS instrucao(1);
     ALIAS add     : std_logic IS instrucao(2);
@@ -52,7 +58,7 @@ ARCHITECTURE arch_name OF Unidade_Controle IS
     -- sub        0         0         1                1                 001            0         0    0
     -- display    0         0         0                0                 000            0         0    1
     -- getIO      0         0         0                1                 010            0         1    0
-    -- je         0         1         x                x                 xxx            0         0    0
+    -- je         0         1         0                0                 000            0         0    0
     -- mov        0         0         1                1                 010            0         0    0
 	 
 	 -- deciframos o opCode que vem da ROM

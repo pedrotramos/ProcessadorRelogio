@@ -1,5 +1,5 @@
 Analysis & Synthesis report for Relogio
-Thu Oct 15 07:25:02 2020
+Thu Oct 15 11:31:16 2020
 Quartus Prime Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition
 
 
@@ -67,7 +67,7 @@ https://fpgasoftware.intel.com/eula.
 +-------------------------------------------------------------------------------+
 ; Analysis & Synthesis Summary                                                  ;
 +---------------------------------+---------------------------------------------+
-; Analysis & Synthesis Status     ; Successful - Thu Oct 15 07:25:02 2020       ;
+; Analysis & Synthesis Status     ; Successful - Thu Oct 15 11:31:16 2020       ;
 ; Quartus Prime Version           ; 20.1.0 Build 711 06/05/2020 SJ Lite Edition ;
 ; Revision Name                   ; Relogio                                     ;
 ; Top-level Entity Name           ; Relogio                                     ;
@@ -595,7 +595,7 @@ Note: In order to hide this table in the UI and the text report file, please set
 Info: *******************************************************************
 Info: Running Quartus Prime Analysis & Synthesis
     Info: Version 20.1.0 Build 711 06/05/2020 SJ Lite Edition
-    Info: Processing started: Thu Oct 15 07:24:46 2020
+    Info: Processing started: Thu Oct 15 11:31:03 2020
 Info: Command: quartus_map --read_settings_files=on --write_settings_files=off Relogio -c Relogio
 Info (20030): Parallel compilation is enabled and will use 2 of the 2 processors detected
 Info (12021): Found 2 design units, including 1 entities, in source file interfacedisplays.vhd
@@ -620,8 +620,8 @@ Info (12021): Found 2 design units, including 1 entities, in source file memoria
     Info (12022): Found design unit 1: memoriaROM-assincrona File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/memoriaROM.vhd Line: 17
     Info (12023): Found entity 1: memoriaROM File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/memoriaROM.vhd Line: 6
 Info (12021): Found 2 design units, including 1 entities, in source file relogio.vhd
-    Info (12022): Found design unit 1: Relogio-arch_name File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/Relogio.vhd Line: 19
-    Info (12023): Found entity 1: Relogio File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/Relogio.vhd Line: 5
+    Info (12022): Found design unit 1: Relogio-rlt File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/Relogio.vhd Line: 22
+    Info (12023): Found entity 1: Relogio File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/Relogio.vhd Line: 7
 Info (12021): Found 2 design units, including 1 entities, in source file fluxodados.vhd
     Info (12022): Found design unit 1: fluxoDados-arch_name File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/fluxoDados.vhd Line: 25
     Info (12023): Found entity 1: fluxoDados File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/fluxoDados.vhd Line: 5
@@ -635,8 +635,8 @@ Info (12021): Found 2 design units, including 1 entities, in source file unidade
     Info (12022): Found design unit 1: Unidade_Controle-arch_name File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/Unidade_Controle.vhd Line: 19
     Info (12023): Found entity 1: Unidade_Controle File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/Unidade_Controle.vhd Line: 5
 Info (12021): Found 2 design units, including 1 entities, in source file processador.vhd
-    Info (12022): Found design unit 1: processador-arch_name File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/processador.vhd Line: 22
-    Info (12023): Found entity 1: processador File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/processador.vhd Line: 5
+    Info (12022): Found design unit 1: processador-arch_name File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/processador.vhd Line: 24
+    Info (12023): Found entity 1: processador File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/processador.vhd Line: 7
 Info (12021): Found 2 design units, including 1 entities, in source file conversorhex7seg.vhd
     Info (12022): Found design unit 1: conversorHex7Seg-comportamento File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/conversorHex7Seg.vhd Line: 14
     Info (12023): Found entity 1: conversorHex7Seg File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/conversorHex7Seg.vhd Line: 4
@@ -656,25 +656,25 @@ Info (12021): Found 2 design units, including 1 entities, in source file mux1bit
     Info (12022): Found design unit 1: mux1bit-Arc File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/mux1bit.vhd Line: 15
     Info (12023): Found entity 1: mux1bit File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/mux1bit.vhd Line: 4
 Info (12127): Elaborating entity "Relogio" for the top level hierarchy
-Info (12128): Elaborating entity "processador" for hierarchy "processador:Processador" File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/Relogio.vhd Line: 35
-Info (12128): Elaborating entity "fluxoDados" for hierarchy "processador:Processador|fluxoDados:FD" File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/processador.vhd Line: 28
-Info (12128): Elaborating entity "registradorGenerico" for hierarchy "processador:Processador|fluxoDados:FD|registradorGenerico:PC" File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/fluxoDados.vhd Line: 51
-Info (12128): Elaborating entity "muxGenerico2x1" for hierarchy "processador:Processador|fluxoDados:FD|muxGenerico2x1:MuxProxPC" File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/fluxoDados.vhd Line: 63
-Info (12128): Elaborating entity "somaConstante" for hierarchy "processador:Processador|fluxoDados:FD|somaConstante:somaUm" File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/fluxoDados.vhd Line: 76
-Info (12128): Elaborating entity "memoriaROM" for hierarchy "processador:Processador|fluxoDados:FD|memoriaROM:ROM" File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/fluxoDados.vhd Line: 86
-Info (12128): Elaborating entity "muxGenerico2x1" for hierarchy "processador:Processador|fluxoDados:FD|muxGenerico2x1:muxIO_Imediato" File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/fluxoDados.vhd Line: 96
-Info (12128): Elaborating entity "ULA" for hierarchy "processador:Processador|fluxoDados:FD|ULA:ULA" File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/fluxoDados.vhd Line: 107
-Info (12128): Elaborating entity "flipFlop" for hierarchy "processador:Processador|fluxoDados:FD|flipFlop:guardaFlagEq" File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/fluxoDados.vhd Line: 119
-Info (12128): Elaborating entity "bancoRegistradoresArqRegMem" for hierarchy "processador:Processador|fluxoDados:FD|bancoRegistradoresArqRegMem:BancoRegistradores" File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/fluxoDados.vhd Line: 128
-Info (12128): Elaborating entity "Unidade_Controle" for hierarchy "processador:Processador|Unidade_Controle:UC" File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/processador.vhd Line: 38
-Info (12128): Elaborating entity "decodificador" for hierarchy "decodificador:Decodificador" File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/Relogio.vhd Line: 45
-Info (12128): Elaborating entity "interfaceCHAVES" for hierarchy "interfaceCHAVES:entradaChaves" File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/Relogio.vhd Line: 57
-Info (12128): Elaborating entity "interfaceBOTOES" for hierarchy "interfaceBOTOES:entradaBotoes" File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/Relogio.vhd Line: 64
-Info (12128): Elaborating entity "divisorGenerico_e_Interface" for hierarchy "divisorGenerico_e_Interface:interfaceBaseTempo" File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/Relogio.vhd Line: 71
+Info (12128): Elaborating entity "processador" for hierarchy "processador:Processador" File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/Relogio.vhd Line: 38
+Info (12128): Elaborating entity "fluxoDados" for hierarchy "processador:Processador|fluxoDados:FD" File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/processador.vhd Line: 30
+Info (12128): Elaborating entity "registradorGenerico" for hierarchy "processador:Processador|fluxoDados:FD|registradorGenerico:PC" File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/fluxoDados.vhd Line: 56
+Info (12128): Elaborating entity "muxGenerico2x1" for hierarchy "processador:Processador|fluxoDados:FD|muxGenerico2x1:MuxProxPC" File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/fluxoDados.vhd Line: 68
+Info (12128): Elaborating entity "somaConstante" for hierarchy "processador:Processador|fluxoDados:FD|somaConstante:somaUm" File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/fluxoDados.vhd Line: 81
+Info (12128): Elaborating entity "memoriaROM" for hierarchy "processador:Processador|fluxoDados:FD|memoriaROM:ROM" File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/fluxoDados.vhd Line: 91
+Info (12128): Elaborating entity "muxGenerico2x1" for hierarchy "processador:Processador|fluxoDados:FD|muxGenerico2x1:muxIO_Imediato" File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/fluxoDados.vhd Line: 101
+Info (12128): Elaborating entity "ULA" for hierarchy "processador:Processador|fluxoDados:FD|ULA:ULA" File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/fluxoDados.vhd Line: 112
+Info (12128): Elaborating entity "flipFlop" for hierarchy "processador:Processador|fluxoDados:FD|flipFlop:guardaFlagEq" File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/fluxoDados.vhd Line: 124
+Info (12128): Elaborating entity "bancoRegistradoresArqRegMem" for hierarchy "processador:Processador|fluxoDados:FD|bancoRegistradoresArqRegMem:BancoRegistradores" File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/fluxoDados.vhd Line: 133
+Info (12128): Elaborating entity "Unidade_Controle" for hierarchy "processador:Processador|Unidade_Controle:UC" File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/processador.vhd Line: 40
+Info (12128): Elaborating entity "decodificador" for hierarchy "decodificador:Decodificador" File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/Relogio.vhd Line: 48
+Info (12128): Elaborating entity "interfaceCHAVES" for hierarchy "interfaceCHAVES:entradaChaves" File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/Relogio.vhd Line: 62
+Info (12128): Elaborating entity "interfaceBOTOES" for hierarchy "interfaceBOTOES:entradaBotoes" File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/Relogio.vhd Line: 70
+Info (12128): Elaborating entity "divisorGenerico_e_Interface" for hierarchy "divisorGenerico_e_Interface:interfaceBaseTempo" File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/Relogio.vhd Line: 78
 Info (12128): Elaborating entity "divisorGenerico" for hierarchy "divisorGenerico_e_Interface:interfaceBaseTempo|divisorGenerico:baseTempo1Seg" File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/divisorGenerico_e_Interface.vhd Line: 22
 Info (12128): Elaborating entity "divisorGenerico" for hierarchy "divisorGenerico_e_Interface:interfaceBaseTempo|divisorGenerico:baseTempoRapida" File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/divisorGenerico_e_Interface.vhd Line: 29
-Info (12128): Elaborating entity "mux1bit" for hierarchy "divisorGenerico_e_Interface:interfaceBaseTempo|mux1bit:muxBaseTempo" File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/divisorGenerico_e_Interface.vhd Line: 36
-Info (12128): Elaborating entity "interfaceDISPLAYS" for hierarchy "interfaceDISPLAYS:Displays" File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/Relogio.vhd Line: 80
+Info (12128): Elaborating entity "mux1bit" for hierarchy "divisorGenerico_e_Interface:interfaceBaseTempo|mux1bit:muxBaseTempo" File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/divisorGenerico_e_Interface.vhd Line: 38
+Info (12128): Elaborating entity "interfaceDISPLAYS" for hierarchy "interfaceDISPLAYS:Displays" File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/Relogio.vhd Line: 88
 Info (12128): Elaborating entity "conversorHex7Seg" for hierarchy "interfaceDISPLAYS:Displays|conversorHex7Seg:DISPLAY0" File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/interfaceDISPLAYS.vhd Line: 20
 Warning (19016): Clock multiplexers are found and protected
     Warning (19017): Found clock multiplexer divisorGenerico_e_Interface:interfaceBaseTempo|mux1bit:muxBaseTempo|o File: C:/Users/mathe/OneDrive/햞ea de Trabalho/Projeto1-DesignComp/Relogio/mux1bit.vhd Line: 11
@@ -697,9 +697,9 @@ Info (21057): Implemented 750 device resources after synthesis - the final resou
     Info (21059): Implemented 42 output pins
     Info (21061): Implemented 695 logic cells
 Info: Quartus Prime Analysis & Synthesis was successful. 0 errors, 11 warnings
-    Info: Peak virtual memory: 4850 megabytes
-    Info: Processing ended: Thu Oct 15 07:25:02 2020
-    Info: Elapsed time: 00:00:16
-    Info: Total CPU time (on all processors): 00:00:29
+    Info: Peak virtual memory: 4848 megabytes
+    Info: Processing ended: Thu Oct 15 11:31:16 2020
+    Info: Elapsed time: 00:00:13
+    Info: Total CPU time (on all processors): 00:00:25
 
 

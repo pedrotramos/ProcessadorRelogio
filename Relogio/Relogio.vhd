@@ -2,6 +2,8 @@ LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
 USE ieee.numeric_std.ALL;
 
+-- top_level: agrupa I/Os, decodificador e processador
+
 ENTITY Relogio IS
   GENERIC (
     DATA_WIDTH : NATURAL := 8;
@@ -13,10 +15,11 @@ ENTITY Relogio IS
     CLOCK_50 : IN std_logic;
     SW       : IN std_logic_vector(7 DOWNTO 0);
     KEY      : IN std_logic_vector(3 DOWNTO 0);
+	 -- Output ports
 	 HEX0, HEX1, HEX2, HEX3, HEX4, HEX5 : OUT STD_LOGIC_VECTOR(6 DOWNTO 0)
   );
 END ENTITY;
-ARCHITECTURE arch_name OF Relogio IS
+ARCHITECTURE rlt OF Relogio IS
 
   SIGNAL leituraSw, processador_decode : std_logic_vector(DATA_WIDTH - 1 DOWNTO 0);
   SIGNAL barramento_entradaProcessador : std_logic_vector(DATA_WIDTH - 1 DOWNTO 0);
@@ -35,11 +38,11 @@ BEGIN
   Processador : ENTITY work.processador
     PORT MAP(
       clk         => CLOCK_50,
-      dataIn      => barramento_entradaProcessador,
-      dadoDsp     => write_hex,
+      dataIn      => barramento_entradaProcessador, -- tri-state base de tempo, chaves e botoes
+      dadoDsp     => write_hex, -- dado a ser escrito displays
       load        => load,
       store       => store,
-      outToDecode => processador_decode
+      outToDecode => processador_decode -- endereco para decodificador
     );
 
   Decodificador : ENTITY work.decodificador

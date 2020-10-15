@@ -51,9 +51,9 @@ BEGIN
   
   -- ==============================================================
   -- Nao usadas nem inicializadas no qsf
-  -- habilitaSW(8) <= '1' WHEN (DataIN = x"06" AND load = '1') ELSE 
+  -- habilitaSW(8) <= '1' WHEN (DataIN = x"08" AND load = '1') ELSE 
   -- '0';
-  -- habilitaSW(9) <= '1' WHEN (DataIN = x"07" AND load = '1') ELSE
+  -- habilitaSW(9) <= '1' WHEN (DataIN = x"09" AND load = '1') ELSE
   -- '0';
   -- ==============================================================
   

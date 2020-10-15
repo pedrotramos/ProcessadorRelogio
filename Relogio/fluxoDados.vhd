@@ -4,10 +4,10 @@ USE ieee.numeric_std.ALL;
 
 ENTITY fluxoDados IS
     GENERIC (
-        VALUE_WIDTH    : NATURAL := 8;
-        ROM_ADDR_WIDTH : NATURAL := 10;
-        REG_ADDR_WIDTH : NATURAL := 5;
-        ROM_DATA_WIDTH : NATURAL := 18;
+        VALUE_WIDTH    : NATURAL := 8; 
+        ROM_ADDR_WIDTH : NATURAL := 10; -- ROM possui 2^10 enderecos
+        REG_ADDR_WIDTH : NATURAL := 5;  -- Banco de registradores possui 2^5 registradores
+        ROM_DATA_WIDTH : NATURAL := 18; -- tamanho de uma instrucao: opCode(3bits) + registrador(5bits) + imediato(10bits)
         OPCODE_WIDTH   : NATURAL := 3
     );
     PORT (
@@ -26,19 +26,24 @@ ARCHITECTURE arch_name OF fluxoDados IS
     SIGNAL PC_ROM                 : std_logic_vector(ROM_ADDR_WIDTH - 1 DOWNTO 0);
     SIGNAL SomaUm_MuxProxPC       : std_logic_vector(ROM_ADDR_WIDTH - 1 DOWNTO 0);
     SIGNAL MuxProxPC_PC           : std_logic_vector(ROM_ADDR_WIDTH - 1 DOWNTO 0);
-    SIGNAL selMuxProxPC_FlagEqual : std_logic;
-    SIGNAL flagEqual              : std_logic;
-    SIGNAL saidaFlopFlop          : std_logic;
-    SIGNAL Instrucao              : std_logic_vector(ROM_DATA_WIDTH - 1 DOWNTO 0);
+	 
     SIGNAL muxIOImed_ULA          : std_logic_vector(VALUE_WIDTH - 1 DOWNTO 0);
     SIGNAL saidaBancoReg          : std_logic_vector(VALUE_WIDTH - 1 DOWNTO 0);
     SIGNAL saidaULA_bancoReg      : std_logic_vector(VALUE_WIDTH - 1 DOWNTO 0);
+	 
+	 SIGNAL selMuxProxPC_FlagEqual : std_logic;
+    SIGNAL flagEqual              : std_logic;
+    SIGNAL saidaFlopFlop          : std_logic;
+	 
+	 SIGNAL Instrucao              : std_logic_vector(ROM_DATA_WIDTH - 1 DOWNTO 0); -- Saida da ROM
 
+	 -- aliases para pedacos da instrucao
     ALIAS opCodeLocal  : std_logic_vector(OPCODE_WIDTH - 1 DOWNTO 0) IS Instrucao(17 DOWNTO 15);
     ALIAS enderecoREG  : std_logic_vector(REG_ADDR_WIDTH - 1 DOWNTO 0) IS Instrucao(14 DOWNTO 10);
     ALIAS enderecoJUMP : std_logic_vector(ROM_ADDR_WIDTH - 1 DOWNTO 0) IS Instrucao(9 DOWNTO 0);
     ALIAS imediato     : std_logic_vector(VALUE_WIDTH - 1 DOWNTO 0) IS Instrucao(7 DOWNTO 0);
 
+	 -- aliases para a palavra de controle, vinda da unidade de controle
     ALIAS selMuxProxPC       : std_logic IS palavraControle(7);
     ALIAS selJe              : std_logic IS palavraControle(6);
     ALIAS selMuxIOImed       : std_logic IS palavraControle(5);
@@ -134,7 +139,7 @@ BEGIN
             habilitaEscrita => habEscritaBancoReg,
             saida           => saidaBancoReg);
 
-    opCode   <= opCodeLocal;
-    dataOUT  <= saidaBancoReg;
-    toDecode <= imediato;
+    opCode   <= opCodeLocal; -- opCode que vai para a unidade de controle
+    dataOUT  <= saidaBancoReg; -- vai para I/Os (nesse caso, displays hexadecimais)
+    toDecode <= imediato; -- vai para decodificador de enderecos
 END ARCHITECTURE;
