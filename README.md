@@ -1,4 +1,4 @@
-# Projeto 1-Design de Computadores
+# Projeto 1 - Design de Computadores
 ### Alunos: Matheus Pellizzon, Pedro Teófilo Ramos e Pedro Paulo Telho
 <br />
 
