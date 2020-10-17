@@ -6,7 +6,6 @@
 <p align="center">
   <img src="top_level_rtl.jpg" width="1000" title="RTL viewer">
 </p>
-<br />
 
 ### Configurações dos componentes
 
