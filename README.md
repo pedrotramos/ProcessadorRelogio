@@ -4,7 +4,7 @@
 
 ### Diagrama da arquitetura 
 <p align="center">
-  <img src="top_level_rtl.jpg" width="1000" title="RTL viewer">
+  <img src="top_level_rlt.jpg" width="1000" title="RTL viewer">
 </p>
 
 ### Configurações dos componentes
@@ -51,3 +51,5 @@
 - [x] assembler em Python
 - [ ] pilha controlada por hardware
 - [ ] instrução de chamada de sub-rotina com um nível 
+
+Demais arquivos, incluindo código em assembly (relogio.s) e assembler podem ser encontrados no github: https://github.com/pedrotramos/Projeto1-DesignComp.
