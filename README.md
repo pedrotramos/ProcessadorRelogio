@@ -1,5 +1,5 @@
-# Projeto 1 - Design de Computadores
-### Alunos: Matheus Pellizzon, Pedro Teófilo Ramos e Pedro Paulo Telho
+# Relógio em FPGA
+### Matheus Pellizzon, Pedro Teófilo Ramos e Pedro Paulo Telho
 <br />
 
 ### Diagrama da arquitetura 
@@ -35,21 +35,15 @@
 </ul>
 <br />
 
-### Requisitos do projeto
-##### Obrigatórios
+### Features do projeto
 - [x] indica horas, minutos e segundos
 - [x] possui sistema para acertar horário
 - [x] possui seleção para base de tempo
-
-##### Opcionais
-###### sobem meio conceito (+)
 - [x] indicação do horário com base em 12 horas - AM/PM
 - [ ] sistema de despertador
 - [x] temporizador com contagem regressiva
-
-###### sobem um conceito
 - [x] assembler em Python
 - [ ] pilha controlada por hardware
 - [ ] instrução de chamada de sub-rotina com um nível 
 
-Demais arquivos, incluindo código em assembly (relogio.s) e assembler podem ser encontrados no github: https://github.com/pedrotramos/Projeto1-DesignComp.
+Demais arquivos, incluindo código em assembly (relogio.s) e assembler podem ser encontrados no github: https://github.com/pedrotramos/ProcessadorRelogio.
